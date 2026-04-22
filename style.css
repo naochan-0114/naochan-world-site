@@ -1,0 +1,319 @@
+/* ============================================
+   なおちゃんの世界 — グローバル変数（色・余白の一元管理）
+   詳細ページを増やすときもここを触れば全体のトーンを揃えやすい
+   ============================================ */
+:root {
+  --color-sky-top: #c8e8ff;
+  --color-sky-mid: #e8f4ff;
+  --color-sky-bottom: #f5f9ff;
+  --color-text: #2a3f55;
+  --color-text-muted: #5a6f82;
+  --color-accent: #6ba3d4;
+  --color-accent-soft: rgba(107, 163, 212, 0.35);
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --shadow-soft: 0 8px 32px rgba(80, 130, 180, 0.12);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --space-section: clamp(3rem, 8vw, 5.5rem);
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.65;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 青空＋柔らかい光のベース（body 直下の装飾レイヤー） */
+.bg-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    165deg,
+    var(--color-sky-top) 0%,
+    var(--color-sky-mid) 42%,
+    var(--color-sky-bottom) 100%
+  );
+  pointer-events: none;
+}
+
+/* 幻想的なハイライト（放射グラデーションを重ねる） */
+.bg-sky::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  opacity: 0.85;
+}
+
+.bg-sky::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(200, 230, 255, 0.35), transparent);
+}
+
+/* --- ヘッダー: 半透明で「透明感」 --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.site-header__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.site-logo {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.site-logo:hover,
+.site-logo:focus-visible {
+  color: var(--color-accent);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.site-nav a {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent-soft);
+}
+
+/* --- ヒーロー --- */
+.hero {
+  padding: clamp(3rem, 12vw, 6rem) 1.25rem;
+  text-align: center;
+}
+
+.hero__content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(1.75rem, 5vw, 2.75rem) clamp(1.25rem, 4vw, 2rem);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.65rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.hero__tagline {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* --- セクション共通 --- */
+.section {
+  padding: var(--space-section) 1.25rem;
+}
+
+.section--world {
+  padding-top: 0;
+}
+
+.section__inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: none;
+  color: var(--color-text);
+}
+
+.section__lead {
+  margin: 0 0 1.75rem;
+  max-width: 52ch;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.section--last {
+  padding-bottom: clamp(3rem, 10vw, 5rem);
+}
+
+/* --- World: 作品カード一覧（グリッドで増設しやすい） --- */
+.work-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.work-card {
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(80, 130, 180, 0.18);
+}
+
+.work-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.work-card__link:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-accent-soft);
+}
+
+/* サムネ枠: 将来 img を置くときはこの中に */
+.work-card__thumb {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(
+    135deg,
+    rgba(180, 220, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(200, 230, 255, 0.45) 100%
+  );
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.work-card__body {
+  padding: 1rem 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.work-card__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.work-card__meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Shop / Profile / Other: 仮プレースホルダー --- */
+.placeholder-card {
+  padding: 1.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(90, 111, 130, 0.35);
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.placeholder-card p {
+  margin: 0;
+}
+
+/* --- フッター --- */
+.site-footer {
+  padding: 1.5rem 1.25rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.site-footer__copy {
+  margin: 0;
+}
+
+/* --- アクセシビリティ: キーボードフォーカス --- */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- モバイル: ナビをややコンパクトに --- */
+@media (max-width: 520px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

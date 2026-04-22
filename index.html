@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="なおちゃんの作品と世界 — 創作のランディングページ" />
+  <title>なおちゃんの世界</title>
+  <!-- Cloudflare Pages 等: 同一階層の静的アセットは相対パス -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- 背景装飾レイヤー（CSS でグラデーション＋光の演出） -->
+  <div class="bg-sky" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="#top">なおちゃんの世界</a>
+      <!-- 1ページ内アンカー。将来別ページに増やすときは href のみ差し替え -->
+      <nav class="site-nav" aria-label="サイト内メニュー">
+        <a href="#world">World</a>
+        <a href="#shop">Shop</a>
+        <a href="#profile">Profile</a>
+        <a href="#other">Other</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ヒーロー: サイトの顔。コピーは要件どおり固定 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <h1 id="hero-title" class="hero__title">なおちゃんの世界</h1>
+        <p class="hero__tagline">なおちゃんの作品と世界</p>
+      </div>
+    </section>
+
+    <!-- World: 作品・世界観の入口。カードを増やすだけで一覧に近づけられる -->
+    <section id="world" class="section section--world" aria-labelledby="world-heading">
+      <div class="section__inner">
+        <h2 id="world-heading" class="section__title">World</h2>
+        <p class="section__lead">作品や世界観への入り口です。詳細ページを足すときはカードのリンク先だけ差し替えます。</p>
+
+        <ul class="work-card-list">
+          <!-- 1カード = 1作品（または1シリーズ）。article で意味づけ -->
+          <li>
+            <article class="work-card">
+              <a class="work-card__link" href="#world">
+                <!-- 将来: ./works/sobo-no-ie/index.html などに変更 -->
+                <span class="work-card__thumb" aria-hidden="true"></span>
+                <span class="work-card__body">
+                  <span class="work-card__title">祖母の家</span>
+                  <span class="work-card__meta">仮タイトル · 準備中</span>
+                </span>
+              </a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="shop" class="section" aria-labelledby="shop-heading">
+      <div class="section__inner">
+        <h2 id="shop-heading" class="section__title">Shop</h2>
+        <p class="section__lead">グッズや販売ページをここにまとめる想定です。</p>
+        <div class="placeholder-card">
+          <p>準備中です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="section" aria-labelledby="profile-heading">
+      <div class="section__inner">
+        <h2 id="profile-heading" class="section__title">Profile</h2>
+        <p class="section__lead">自己紹介や活動のリンクを置くエリアです。</p>
+        <div class="placeholder-card">
+          <p>準備中です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="other" class="section section--last" aria-labelledby="other-heading">
+      <div class="section__inner">
+        <h2 id="other-heading" class="section__title">Other</h2>
+        <p class="section__lead">リンク集やお知らせなど、枠に収まらないもの用のスペースです。</p>
+        <div class="placeholder-card">
+          <p>準備中です。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__copy"><small>© <span id="js-year"></span> なおちゃんの世界</small></p>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
