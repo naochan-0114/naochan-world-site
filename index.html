@@ -3,94 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="なおちゃんの作品と世界 — 創作のランディングページ" />
+  <meta
+    name="description"
+    content="なおちゃんの創作世界への入口になる、作品と記録を集めた創作サイト。"
+  />
   <title>なおちゃんの世界</title>
-  <!-- Cloudflare Pages 等: 同一階層の静的アセットは相対パス -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <!-- 背景装飾レイヤー（CSS でグラデーション＋光の演出） -->
   <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
 
   <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-logo" href="#top">なおちゃんの世界</a>
-      <!-- 1ページ内アンカー。将来別ページに増やすときは href のみ差し替え -->
-      <nav class="site-nav" aria-label="サイト内メニュー">
-        <a href="#world">World</a>
-        <a href="#shop">Shop</a>
-        <a href="#profile">Profile</a>
-        <a href="#other">Other</a>
-      </nav>
-    </div>
+    <a class="site-logo" href="#top">なおちゃんの世界</a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      <span class="sr-only">メニュー</span>
+      <span class="menu-toggle__line"></span>
+      <span class="menu-toggle__line"></span>
+      <span class="menu-toggle__line"></span>
+    </button>
   </header>
 
+  <div class="menu-overlay" hidden aria-hidden="true" data-menu-overlay></div>
+
+  <aside
+    class="menu-panel"
+    id="site-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="menu-title"
+    aria-hidden="true"
+    data-menu-panel
+    tabindex="-1"
+  >
+    <div class="menu-panel__inner">
+      <div class="menu-panel__header">
+        <div>
+          <p class="menu-panel__eyebrow">Site Menu</p>
+          <h2 class="menu-panel__title" id="menu-title">なおちゃんの世界</h2>
+        </div>
+        <button
+          class="menu-close"
+          type="button"
+          aria-label="メニューを閉じる"
+          data-menu-close
+        >
+          閉じる
+        </button>
+      </div>
+
+      <nav class="menu-nav" aria-label="サイトメニュー">
+        <a href="#works" data-menu-link>作品</a>
+        <a href="#records" data-menu-link>解説・記録</a>
+        <a href="#profile" data-menu-link>プロフィール</a>
+        <a href="#booth" data-menu-link>BOOTH</a>
+      </nav>
+
+      <p class="menu-panel__note">
+        作品、記録、プロフィール、BOOTHへの入口を静かにまとめたドロワーメニューです。
+      </p>
+    </div>
+  </aside>
+
   <main id="top">
-    <!-- ヒーロー: サイトの顔。コピーは要件どおり固定 -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__content">
-        <h1 id="hero-title" class="hero__title">なおちゃんの世界</h1>
-        <p class="hero__tagline">なおちゃんの作品と世界</p>
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Creative Entrance</p>
+          <h1 id="hero-title" class="hero__title">なおちゃんの世界</h1>
+          <p class="hero__tagline">作品と記録を集めた創作サイト</p>
+          <p class="hero__description">
+            青空とやわらかな光のあわいに、作品、解説、記録、プロフィールを静かにつないだ入口です。
+            特定の代表作を強く押し出すよりも、この場所全体の空気と世界観から入れるように整えています。
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#works">作品を見る</a>
+            <a class="button" href="#profile">プロフィール</a>
+            <a class="button" href="#booth">BOOTH</a>
+          </div>
+        </div>
+
+        <div class="hero__aside">
+          <section class="hero__card" aria-label="サイトの案内">
+            <p class="hero__card-label">Entrance Map</p>
+            <p class="hero__card-text">
+              まずは作品へ。気になったら解説や記録へ。プロフィールやBOOTHも、軽やかにつながるようにまとめています。
+            </p>
+            <ul class="hero__highlights" aria-label="このサイトで見られるもの">
+              <li>作品への入口</li>
+              <li>解説と制作記録</li>
+              <li>プロフィールとBOOTH案内</li>
+            </ul>
+          </section>
+        </div>
       </div>
     </section>
 
-    <!-- World: 作品・世界観の入口。カードを増やすだけで一覧に近づけられる -->
-    <section id="world" class="section section--world" aria-labelledby="world-heading">
-      <div class="section__inner">
-        <h2 id="world-heading" class="section__title">World</h2>
-        <p class="section__lead">作品や世界観への入り口です。詳細ページを足すときはカードのリンク先だけ差し替えます。</p>
+    <section class="guide" aria-labelledby="guide-title">
+      <div class="guide__wrap">
+        <div class="section-heading">
+          <p class="section-heading__eyebrow">Guide</p>
+          <h2 class="section-heading__title" id="guide-title">
+            創作世界を、ゆっくりたどるための入口
+          </h2>
+          <p class="section-heading__text">
+            情報を詰め込みすぎず、見たいものへ自然に進めるように入口をまとめています。
+            今後ビジュアルを差し替えたり、各ページを増やしたりしても扱いやすい構成です。
+          </p>
+        </div>
 
-        <ul class="work-card-list">
-          <!-- 1カード = 1作品（または1シリーズ）。article で意味づけ -->
-          <li>
-            <article class="work-card">
-              <a class="work-card__link" href="#world">
-                <!-- 将来: ./works/sobo-no-ie/index.html などに変更 -->
-                <span class="work-card__thumb" aria-hidden="true"></span>
-                <span class="work-card__body">
-                  <span class="work-card__title">祖母の家</span>
-                  <span class="work-card__meta">仮タイトル · 準備中</span>
-                </span>
+        <div class="guide__inner">
+          <article class="guide-card" id="works">
+            <p class="guide-card__eyebrow">Works</p>
+            <h3>作品について</h3>
+            <p>
+              イラストや世界観に触れられる作品ページへの入口です。まず全体の空気を感じたいときに、最初に開きやすい導線にしています。
+            </p>
+          </article>
+
+          <article class="guide-card" id="records">
+            <p class="guide-card__eyebrow">Records</p>
+            <h3>解説や記録について</h3>
+            <p>
+              制作の背景やメモ、過程の記録などをまとめる場所です。作品の周辺にある言葉も、世界の一部として読めるようにしています。
+            </p>
+          </article>
+
+          <article class="guide-card" id="profile">
+            <p class="guide-card__eyebrow">Profile</p>
+            <h3>プロフィール</h3>
+            <p>
+              制作スタンスや活動の輪郭、自己紹介を確認できる入口です。はじめて訪れた人にも、このサイトの温度感が伝わるようにしています。
+            </p>
+          </article>
+
+          <article class="guide-card" id="booth">
+            <p class="guide-card__eyebrow">BOOTH</p>
+            <h3>BOOTHへの案内</h3>
+            <p>
+              今後の外部販売ページへの導線です。現在はダミーリンクですが、あとから差し替えやすいようにシンプルに置いてあります。
+            </p>
+            <p>
+              <a
+                class="guide-card__link"
+                href="https://example.com"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                BOOTHリンク（ダミー）
               </a>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="shop" class="section" aria-labelledby="shop-heading">
-      <div class="section__inner">
-        <h2 id="shop-heading" class="section__title">Shop</h2>
-        <p class="section__lead">グッズや販売ページをここにまとめる想定です。</p>
-        <div class="placeholder-card">
-          <p>準備中です。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="profile" class="section" aria-labelledby="profile-heading">
-      <div class="section__inner">
-        <h2 id="profile-heading" class="section__title">Profile</h2>
-        <p class="section__lead">自己紹介や活動のリンクを置くエリアです。</p>
-        <div class="placeholder-card">
-          <p>準備中です。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="other" class="section section--last" aria-labelledby="other-heading">
-      <div class="section__inner">
-        <h2 id="other-heading" class="section__title">Other</h2>
-        <p class="section__lead">リンク集やお知らせなど、枠に収まらないもの用のスペースです。</p>
-        <div class="placeholder-card">
-          <p>準備中です。</p>
+            </p>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p class="site-footer__copy"><small>© <span id="js-year"></span> なおちゃんの世界</small></p>
+    <p><small>&copy; <span id="js-year"></span> なおちゃんの世界</small></p>
   </footer>
 
   <script src="./script.js" defer></script>
