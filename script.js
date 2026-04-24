@@ -16,6 +16,7 @@
     var closeButton = document.querySelector("[data-menu-close]");
     var majorItems = panel ? panel.querySelectorAll("[data-major]") : [];
     var subRows = panel ? panel.querySelectorAll("[data-subrow]") : [];
+    var subRowsWrapper = panel ? panel.querySelector("[data-subrows]") : null;
     var menuLinks = panel ? panel.querySelectorAll("[data-menu-link]") : [];
     var opened = false;
 
@@ -39,16 +40,28 @@
       panel.setAttribute("aria-hidden", "true");
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "メニューを開く");
+      activateMajor("");
     }
 
     function activateMajor(key) {
+      var hasActiveSubRow = false;
+
       Array.prototype.forEach.call(majorItems, function (item) {
         item.classList.toggle("is-current", item.getAttribute("data-major") === key);
       });
 
       Array.prototype.forEach.call(subRows, function (row) {
-        row.classList.toggle("is-active", row.getAttribute("data-subrow") === key);
+        var shouldShow = row.getAttribute("data-subrow") === key;
+        row.classList.toggle("is-active", shouldShow);
+
+        if (shouldShow) {
+          hasActiveSubRow = true;
+        }
       });
+
+      if (subRowsWrapper) {
+        subRowsWrapper.classList.toggle("has-subrow", hasActiveSubRow);
+      }
     }
 
     Array.prototype.forEach.call(majorItems, function (item) {
@@ -106,6 +119,8 @@
         closeMenu();
       }
     });
+
+    activateMajor("");
   }
 
   function initSmoothAnchorScroll() {
