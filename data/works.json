@@ -17,10 +17,14 @@
       "category": "ワールド",
       "availability": "非売品",
       "description": "祖母の家を再現したVRChatワールド。懐かしさと生活感を感じる空間を目指した作品。",
-      "tags": ["和室", "ノスタルジー", "生活感"],
+      "tags": [
+        "和室",
+        "ノスタルジー",
+        "生活感"
+      ],
       "thumbnail": "",
       "links": {
-        "detail": "#",
+        "detail": "./works/grandmas-house.html",
         "vrchat": "https://vrchat.com/home"
       }
     },
@@ -30,10 +34,14 @@
       "category": "ギミック",
       "availability": "販売品",
       "description": "VRChatワールド向けの襖・引き戸用ギミック。",
-      "tags": ["扉", "和室", "インタラクト"],
+      "tags": [
+        "扉",
+        "和室",
+        "インタラクト"
+      ],
       "thumbnail": "",
       "links": {
-        "detail": "#",
+        "detail": "./works/grandmas-house.html?from=sample-fusuma-gimmick",
         "booth": "https://naochan-shop.booth.pm/"
       }
     },
@@ -43,10 +51,14 @@
       "category": "小物",
       "availability": "無料配布",
       "description": "VRChatワールドに置ける、レトロな雰囲気の小物モデル。",
-      "tags": ["生活感", "レトロ", "家具小物"],
+      "tags": [
+        "生活感",
+        "レトロ",
+        "家具小物"
+      ],
       "thumbnail": "",
       "links": {
-        "detail": "#",
+        "detail": "./works/grandmas-house.html?from=sample-showa-remote",
         "download": "#"
       }
     }

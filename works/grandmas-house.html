@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="祖母の家の作品詳細ページ。作品概要・ギャラリー・関連リンクをまとめた展示ページです。"
+  />
+  <title>祖母の家 | 作品詳細 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="work-detail-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major is-current" role="menuitem" href="../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../index.html#profile" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../index.html#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="work-detail-main">
+    <article class="work-detail-hero" aria-labelledby="work-title">
+      <div class="work-detail-hero__meta">
+        <span class="work-badge work-badge--category">ワールド</span>
+        <span class="work-badge work-badge--availability">非売品</span>
+      </div>
+      <h1 id="work-title">祖母の家</h1>
+      <ul class="work-detail-hero__tags" aria-label="サブタグ">
+        <li>和室</li>
+        <li>ノスタルジー</li>
+        <li>生活感</li>
+      </ul>
+
+      <div class="work-detail-grid">
+        <section class="work-detail-panel" aria-labelledby="main-visual-title">
+          <h2 id="main-visual-title">メインビジュアル</h2>
+          <div class="work-detail-visual" role="img" aria-label="祖母の家メインビジュアルのプレースホルダー">
+            <span>Main Visual</span>
+            <strong>Thumbnail Coming Soon</strong>
+          </div>
+        </section>
+
+        <section class="work-detail-panel" aria-labelledby="overview-title">
+          <h2 id="overview-title">作品概要</h2>
+          <p>
+            昔ながらの住宅をモチーフに、暮らしの痕跡が感じられるVRChat向けワールドとして設計しました。
+            空気感・導線・生活音の余白を大切にし、懐かしさと安心感を同時に味わえる体験を目指しています。
+          </p>
+          <div class="work-detail-links" aria-label="作品リンク">
+            <a class="work-link work-link--vrchat" href="https://vrchat.com/home" target="_blank" rel="noopener noreferrer">VRChatで開く</a>
+            <a class="work-link work-link--booth" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTHで見る</a>
+            <a class="work-link work-link--download" href="#">ダウンロード</a>
+          </div>
+        </section>
+      </div>
+
+      <div class="work-detail-grid">
+        <section class="work-detail-panel" aria-labelledby="gallery-title">
+          <h2 id="gallery-title">ギャラリー</h2>
+          <div class="work-detail-gallery">
+            <div class="work-detail-gallery__item">Gallery 1</div>
+            <div class="work-detail-gallery__item">Gallery 2</div>
+            <div class="work-detail-gallery__item">Gallery 3</div>
+          </div>
+        </section>
+
+        <section class="work-detail-panel" aria-labelledby="docs-title">
+          <h2 id="docs-title">関連資料・制作日記</h2>
+          <p>制作過程の詳しい記録や技術メモは、以下の制作日記・資料ページで公開します。</p>
+          <div class="work-detail-docs">
+            <a href="../index.html#records">制作日記: 祖母の家の記録を見る</a>
+            <a href="../index.html#records">ギミック資料: 室内演出の仕組みを見る</a>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

@@ -176,6 +176,7 @@
     link.className = "work-link work-link--" + kind;
     link.href = href;
     link.textContent = label;
+    link.setAttribute("data-card-action", "true");
 
     if (external) {
       link.target = "_blank";
@@ -183,6 +184,40 @@
     }
 
     return link;
+  }
+
+  function isActionTarget(target) {
+    return target instanceof Element && Boolean(target.closest("[data-card-action='true']"));
+  }
+
+  function makeCardNavigable(card, detailUrl, title) {
+    if (!detailUrl || detailUrl === "#") {
+      return;
+    }
+
+    card.classList.add("work-card--clickable");
+    card.tabIndex = 0;
+    card.setAttribute("role", "link");
+    card.setAttribute("aria-label", title + " の作品詳細へ移動");
+
+    card.addEventListener("click", function (event) {
+      if (isActionTarget(event.target)) {
+        return;
+      }
+
+      window.location.href = detailUrl;
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (isActionTarget(event.target)) {
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        window.location.href = detailUrl;
+      }
+    });
   }
 
   function initWorksPage() {
@@ -255,6 +290,7 @@
             var title = document.createElement("h3");
             var description = document.createElement("p");
             var tags = document.createElement("ul");
+            var cardHint = document.createElement("p");
             var actions = document.createElement("div");
             var detailUrl = item.links && item.links.detail ? item.links.detail : "#";
 
@@ -265,6 +301,7 @@
             category.className = "work-badge work-badge--category";
             availability.className = "work-badge work-badge--availability";
             tags.className = "work-tags";
+            cardHint.className = "work-card__hint";
             actions.className = "work-actions";
 
             if (item.thumbnail) {
@@ -276,7 +313,7 @@
             } else {
               var fallback = document.createElement("div");
               fallback.className = "work-card__placeholder";
-              fallback.innerHTML = '<span>Sample</span><strong>' + item.title + "</strong>";
+              fallback.innerHTML = '<span>Sky Shelf</span><strong>' + item.title + "</strong>";
               media.appendChild(fallback);
             }
 
@@ -287,14 +324,13 @@
 
             title.textContent = item.title;
             description.textContent = item.description;
+            cardHint.textContent = "カード全体を押すと作品詳細を開きます";
 
             (item.tags || []).forEach(function (tag) {
               var tagItem = document.createElement("li");
               tagItem.textContent = tag;
               tags.appendChild(tagItem);
             });
-
-            actions.appendChild(createLinkButton("詳細を見る", detailUrl, "detail", false));
 
             if (item.links && item.links.vrchat) {
               actions.appendChild(createLinkButton("VRChatで開く", item.links.vrchat, "vrchat", true));
@@ -312,10 +348,15 @@
             body.appendChild(title);
             body.appendChild(description);
             body.appendChild(tags);
-            body.appendChild(actions);
+            body.appendChild(cardHint);
+
+            if (actions.children.length > 0) {
+              body.appendChild(actions);
+            }
 
             card.appendChild(media);
             card.appendChild(body);
+            makeCardNavigable(card, detailUrl, item.title);
             grid.appendChild(card);
           });
         }
