@@ -9,164 +9,104 @@
     }
   }
 
-  function initMenuSheet() {
+  function initTopFlowMenu() {
     var body = document.body;
+    var panel = document.querySelector("[data-menu-panel]");
     var toggle = document.querySelector("[data-menu-toggle]");
     var closeButton = document.querySelector("[data-menu-close]");
-    var panel = document.querySelector("[data-menu-panel]");
-    var overlay = document.querySelector("[data-menu-overlay]");
-    var menuLinks = document.querySelectorAll("[data-menu-link]");
-    var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var previousActiveElement = null;
-    var overlayTimer = 0;
-    var isOpen = false;
-    var scrollY = 0;
+    var majorItems = panel ? panel.querySelectorAll("[data-major]") : [];
+    var subRows = panel ? panel.querySelectorAll("[data-subrow]") : [];
+    var subRowsWrap = panel ? panel.querySelector("[data-subrows]") : null;
+    var menuLinks = panel ? panel.querySelectorAll("[data-menu-link]") : [];
+    var opened = false;
 
-    if (!toggle || !closeButton || !panel || !overlay) {
+    if (!panel || !toggle || !closeButton || !subRowsWrap) {
       return;
     }
 
-    function getTransitionDelay() {
-      return reduceMotionQuery.matches ? 0 : 320;
-    }
-
-    function getFocusableElements() {
-      return Array.prototype.filter.call(
-        panel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
-        function (element) {
-          return !element.hasAttribute("disabled");
+    function clearSubmenu() {
+      Array.prototype.forEach.call(majorItems, function (item) {
+        if (item.tagName === "BUTTON") {
+          item.classList.remove("is-current");
+          item.setAttribute("aria-expanded", "false");
         }
-      );
-    }
-
-    function lockScroll() {
-      var scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-      scrollY = window.pageYOffset || window.scrollY || 0;
-      body.style.top = "-" + scrollY + "px";
-      body.style.paddingRight = scrollBarWidth > 0 ? scrollBarWidth + "px" : "";
-      body.classList.add("menu-open");
-    }
-
-    function unlockScroll() {
-      body.classList.remove("menu-open");
-      body.style.top = "";
-      body.style.paddingRight = "";
-      window.scrollTo(0, scrollY);
-    }
-
-    function focusFirstElement() {
-      var focusable = getFocusableElements();
-      var target = focusable.length ? focusable[0] : panel;
-
-      window.requestAnimationFrame(function () {
-        target.focus();
       });
-    }
 
-    function syncUi(open) {
-      window.clearTimeout(overlayTimer);
+      Array.prototype.forEach.call(subRows, function (row) {
+        row.classList.remove("is-active");
+      });
 
-      isOpen = open;
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
-      panel.setAttribute("aria-hidden", String(!open));
-      overlay.setAttribute("aria-hidden", String(!open));
-      panel.classList.toggle("is-open", open);
-
-      if (open) {
-        overlay.hidden = false;
-        lockScroll();
-
-        window.requestAnimationFrame(function () {
-          overlay.classList.add("is-active");
-        });
-      } else {
-        overlay.classList.remove("is-active");
-        unlockScroll();
-
-        overlayTimer = window.setTimeout(function () {
-          if (!isOpen) {
-            overlay.hidden = true;
-          }
-        }, getTransitionDelay());
-      }
+      subRowsWrap.classList.remove("is-visible");
     }
 
     function openMenu() {
-      if (isOpen) {
-        return;
-      }
-
-      previousActiveElement = document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : toggle;
-
-      syncUi(true);
-      focusFirstElement();
+      opened = true;
+      body.classList.add("menu-open");
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "メニューを閉じる");
     }
 
-    function closeMenu(options) {
-      var shouldRestoreFocus = !options || options.restoreFocus !== false;
-
-      if (!isOpen) {
-        return;
-      }
-
-      syncUi(false);
-
-      if (shouldRestoreFocus && previousActiveElement && typeof previousActiveElement.focus === "function") {
-        previousActiveElement.focus();
-      }
+    function closeMenu() {
+      opened = false;
+      body.classList.remove("menu-open");
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "メニューを開く");
+      clearSubmenu();
     }
 
-    function onDocumentKeydown(event) {
-      var focusable;
-      var first;
-      var last;
+    function activateMajor(key) {
+      var hasSubRow = false;
 
-      if (!isOpen) {
-        return;
-      }
+      Array.prototype.forEach.call(majorItems, function (item) {
+        if (item.tagName === "BUTTON") {
+          var isCurrent = item.getAttribute("data-major") === key;
+          item.classList.toggle("is-current", isCurrent);
+          item.setAttribute("aria-expanded", isCurrent ? "true" : "false");
+        }
+      });
 
-      if (event.key === "Escape") {
-        event.preventDefault();
-        closeMenu();
-        return;
-      }
+      Array.prototype.forEach.call(subRows, function (row) {
+        var active = row.getAttribute("data-subrow") === key;
+        row.classList.toggle("is-active", active);
+        hasSubRow = hasSubRow || active;
+      });
 
-      if (event.key !== "Tab") {
-        return;
-      }
-
-      focusable = getFocusableElements();
-
-      if (!focusable.length) {
-        event.preventDefault();
-        panel.focus();
-        return;
-      }
-
-      first = focusable[0];
-      last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+      subRowsWrap.classList.toggle("is-visible", hasSubRow);
     }
 
-    panel.classList.remove("is-open");
-    panel.setAttribute("aria-hidden", "true");
-    overlay.classList.remove("is-active");
-    overlay.hidden = true;
-    overlay.setAttribute("aria-hidden", "true");
+    Array.prototype.forEach.call(majorItems, function (item) {
+      var key = item.getAttribute("data-major");
+      var hasSubRow = panel.querySelector('[data-subrow="' + key + '"]');
+
+      if (item.tagName === "BUTTON") {
+        item.addEventListener("mouseenter", function () {
+          if (opened && hasSubRow) {
+            activateMajor(key);
+          }
+        });
+
+        item.addEventListener("click", function () {
+          if (!opened) {
+            openMenu();
+          }
+
+          if (hasSubRow) {
+            activateMajor(key);
+          }
+        });
+      } else {
+        item.addEventListener("click", function () {
+          closeMenu();
+        });
+      }
+    });
 
     toggle.addEventListener("click", function () {
-      if (isOpen) {
+      if (opened) {
         closeMenu();
       } else {
         openMenu();
@@ -177,17 +117,17 @@
       closeMenu();
     });
 
-    overlay.addEventListener("click", function () {
-      closeMenu();
-    });
-
     Array.prototype.forEach.call(menuLinks, function (link) {
       link.addEventListener("click", function () {
-        closeMenu({ restoreFocus: false });
+        closeMenu();
       });
     });
 
-    document.addEventListener("keydown", onDocumentKeydown);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && opened) {
+        closeMenu();
+      }
+    });
   }
 
   function initSmoothAnchorScroll() {
@@ -238,6 +178,6 @@
   }
 
   setCurrentYear();
-  initMenuSheet();
+  initTopFlowMenu();
   initSmoothAnchorScroll();
 })();

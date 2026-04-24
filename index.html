@@ -44,71 +44,48 @@
         <span class="menu-toggle__line"></span>
       </button>
     </div>
+
+    <nav
+      class="top-flow-menu"
+      id="site-menu"
+      aria-label="サイトカテゴリー"
+      aria-hidden="true"
+      data-menu-panel
+    >
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major" role="menuitem" data-major="works" href="./works.html">
+          作品
+        </a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records" data-has-submenu="true" aria-expanded="false">
+          解説・記録
+        </button>
+        <a class="top-flow-menu__major" role="menuitem" data-major="profile" href="./profile.html">
+          プロフィール
+        </a>
+        <a
+          class="top-flow-menu__major"
+          role="menuitem"
+          data-major="booth"
+          href="https://naochan-shop.booth.pm/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          BOOTH
+        </a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="#records" data-menu-link>ギミック資料</a>
+          <a href="#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
   </header>
-
-  <div class="menu-overlay" hidden aria-hidden="true" data-menu-overlay></div>
-
-  <aside
-    class="menu-sheet"
-    id="site-menu"
-    role="dialog"
-    aria-modal="true"
-    aria-label="サイトメニュー"
-    aria-hidden="true"
-    data-menu-panel
-    tabindex="-1"
-  >
-    <div class="menu-sheet__inner">
-      <button
-        class="menu-close"
-        type="button"
-        aria-label="メニューを閉じる"
-        data-menu-close
-      >
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">閉じる</span>
-      </button>
-
-      <nav class="menu-nav" aria-label="サイトメニュー">
-        <ul class="menu-nav__list">
-          <li class="menu-nav__item">
-            <a class="menu-card menu-card--works" href="#works" data-menu-link>
-              <span class="menu-card__icon menu-card__icon--works" aria-hidden="true"></span>
-              <span class="menu-card__label">作品</span>
-              <span class="menu-card__meta">世界観や作品に触れる</span>
-            </a>
-          </li>
-          <li class="menu-nav__item">
-            <a class="menu-card menu-card--records" href="#records" data-menu-link>
-              <span class="menu-card__icon menu-card__icon--records" aria-hidden="true"></span>
-              <span class="menu-card__label">解説・記録</span>
-              <span class="menu-card__meta">制作の背景や記録を見る</span>
-            </a>
-          </li>
-          <li class="menu-nav__item">
-            <a class="menu-card menu-card--profile" href="#profile" data-menu-link>
-              <span class="menu-card__icon menu-card__icon--profile" aria-hidden="true"></span>
-              <span class="menu-card__label">プロフィール</span>
-              <span class="menu-card__meta">つくる人と世界の輪郭を知る</span>
-            </a>
-          </li>
-          <li class="menu-nav__item">
-            <a
-              class="menu-card menu-card--booth"
-              href="https://naochan-shop.booth.pm/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-menu-link
-            >
-              <span class="menu-card__icon menu-card__icon--booth" aria-hidden="true"></span>
-              <span class="menu-card__label">BOOTH</span>
-              <span class="menu-card__meta">グッズや配布物を見る</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </aside>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
@@ -125,29 +102,26 @@
         <div class="hero__veil" aria-hidden="true"></div>
 
         <div class="hero__content">
-          <p class="hero__eyebrow">ここは、創作と記録が育つ場所。</p>
+          <p class="hero__eyebrow">Welcome to my world</p>
           <h1 id="hero-title" class="hero__title">なおちゃんの世界</h1>
           <p class="hero__tagline">作品と記録を集めた創作サイト</p>
           <p class="hero__lead">
-            まだ芽のような創作世界が、光を受けながら少しずつ輪郭を持ちはじめる場所。
-            作品と記録が、あなたの世界へそっとつながります。
+            ここは、まだ芽のような創作世界が光を受けながら少しずつ輪郭を持ちはじめる場所。
+            AIに支えられながら、今日も前へ進んでいきます。
           </p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#works">作品を見る</a>
-            <a class="button button--secondary" href="#profile">プロフィール</a>
-          </div>
-
-          <p class="hero__subaction">
-            グッズや作品の配布はこちらから
+            <a class="button button--primary" href="./works.html">作品を見る</a>
+            <a class="button button--secondary" href="./profile.html">プロフィール</a>
             <a
+              class="button button--secondary"
               href="https://naochan-shop.booth.pm/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              BOOTHへ
+              BOOTH
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </section>
