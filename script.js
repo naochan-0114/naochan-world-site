@@ -185,6 +185,39 @@
     return link;
   }
 
+  function initCopyButtons() {
+    var copyButtons = document.querySelectorAll("[data-copy-text]");
+
+    Array.prototype.forEach.call(copyButtons, function (button) {
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      button.addEventListener("click", function () {
+        var copyText = button.getAttribute("data-copy-text") || "";
+        var originalText = button.textContent || "コピー";
+
+        if (!copyText) {
+          return;
+        }
+
+        navigator.clipboard.writeText(copyText)
+          .then(function () {
+            button.textContent = "コピーしました";
+            setTimeout(function () {
+              button.textContent = originalText;
+            }, 1600);
+          })
+          .catch(function () {
+            button.textContent = "コピー失敗";
+            setTimeout(function () {
+              button.textContent = originalText;
+            }, 1600);
+          });
+      });
+    });
+  }
+
   function initWorksPage() {
     var root = document.querySelector("[data-works-root]");
 
@@ -294,6 +327,28 @@
               tags.appendChild(tagItem);
             });
 
+            if (detailUrl && detailUrl !== "#") {
+              card.classList.add("work-card--clickable");
+              card.setAttribute("tabindex", "0");
+              card.setAttribute("role", "link");
+              card.setAttribute("aria-label", item.title + " の詳細ページへ");
+
+              card.addEventListener("click", function (event) {
+                if (event.target instanceof Element && event.target.closest(".work-link")) {
+                  return;
+                }
+
+                window.location.href = detailUrl;
+              });
+
+              card.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  window.location.href = detailUrl;
+                }
+              });
+            }
+
             actions.appendChild(createLinkButton("詳細を見る", detailUrl, "detail", false));
 
             if (item.links && item.links.vrchat) {
@@ -331,5 +386,6 @@
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
+  initCopyButtons();
   initWorksPage();
 })();
