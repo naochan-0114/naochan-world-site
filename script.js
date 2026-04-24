@@ -185,6 +185,112 @@
     return link;
   }
 
+  function initWorkGallerySwitch() {
+    var galleries = document.querySelectorAll("[data-gallery]");
+
+    Array.prototype.forEach.call(galleries, function (gallery) {
+      var mainImage = gallery.querySelector("[data-gallery-main]");
+      var thumbs = gallery.querySelectorAll("[data-gallery-thumb]");
+      var thumbsContainer = gallery.querySelector("[data-gallery-thumbs]");
+      var activeIndex = 0;
+
+      if (!(mainImage instanceof HTMLImageElement) || thumbs.length === 0) {
+        return;
+      }
+
+      function activateThumb(index, focusThumb) {
+        if (index < 0 || index >= thumbs.length) {
+          return;
+        }
+
+        activeIndex = index;
+
+        Array.prototype.forEach.call(thumbs, function (thumb, thumbIndex) {
+          var isActive = thumbIndex === activeIndex;
+          var fullSrc = thumb.getAttribute("data-full-src") || "";
+          var fullAlt = thumb.getAttribute("data-full-alt") || "作品画像";
+
+          thumb.classList.toggle("is-active", isActive);
+          thumb.setAttribute("aria-selected", isActive ? "true" : "false");
+
+          if (isActive && fullSrc) {
+            mainImage.src = fullSrc;
+            mainImage.alt = fullAlt;
+          }
+        });
+
+        if (focusThumb) {
+          thumbs[activeIndex].focus();
+        }
+      }
+
+      Array.prototype.forEach.call(thumbs, function (thumb, thumbIndex) {
+        thumb.addEventListener("click", function () {
+          activateThumb(thumbIndex, false);
+        });
+      });
+
+      if (thumbsContainer) {
+        thumbsContainer.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            activateThumb((activeIndex + 1) % thumbs.length, true);
+          }
+
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            activateThumb((activeIndex - 1 + thumbs.length) % thumbs.length, true);
+          }
+
+          if (event.key === "Home") {
+            event.preventDefault();
+            activateThumb(0, true);
+          }
+
+          if (event.key === "End") {
+            event.preventDefault();
+            activateThumb(thumbs.length - 1, true);
+          }
+        });
+      }
+
+      activateThumb(0, false);
+    });
+  }
+
+  function initCopyButtons() {
+    var copyButtons = document.querySelectorAll("[data-copy-text]");
+
+    Array.prototype.forEach.call(copyButtons, function (button) {
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      button.addEventListener("click", function () {
+        var copyText = button.getAttribute("data-copy-text") || "";
+        var originalText = button.textContent || "コピー";
+
+        if (!copyText) {
+          return;
+        }
+
+        navigator.clipboard.writeText(copyText)
+          .then(function () {
+            button.textContent = "コピーしました";
+            setTimeout(function () {
+              button.textContent = originalText;
+            }, 1600);
+          })
+          .catch(function () {
+            button.textContent = "コピー失敗";
+            setTimeout(function () {
+              button.textContent = originalText;
+            }, 1600);
+          });
+      });
+    });
+  }
+
   function initWorksPage() {
     var root = document.querySelector("[data-works-root]");
 
@@ -294,6 +400,28 @@
               tags.appendChild(tagItem);
             });
 
+            if (detailUrl && detailUrl !== "#") {
+              card.classList.add("work-card--clickable");
+              card.setAttribute("tabindex", "0");
+              card.setAttribute("role", "link");
+              card.setAttribute("aria-label", item.title + " の詳細ページへ");
+
+              card.addEventListener("click", function (event) {
+                if (event.target instanceof Element && event.target.closest(".work-link")) {
+                  return;
+                }
+
+                window.location.href = detailUrl;
+              });
+
+              card.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  window.location.href = detailUrl;
+                }
+              });
+            }
+
             actions.appendChild(createLinkButton("詳細を見る", detailUrl, "detail", false));
 
             if (item.links && item.links.vrchat) {
@@ -331,5 +459,7 @@
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
+  initWorkGallerySwitch();
+  initCopyButtons();
   initWorksPage();
 })();

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="祖母の家（Grandma's House）の作品詳細ページ。見どころや体験内容、仕様情報を紹介します。"
+  />
+  <title>祖母の家 | 作品詳細 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="work-detail-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major is-current" role="menuitem" href="../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../index.html#profile" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../index.html#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="work-detail-main" id="top">
+    <nav class="breadcrumbs" aria-label="パンくず">
+      <ol>
+        <li><a href="../index.html#top">トップ</a></li>
+        <li><a href="../works.html">作品一覧</a></li>
+        <li aria-current="page">祖母の家</li>
+      </ol>
+    </nav>
+
+    <article class="work-detail-shell" aria-labelledby="work-title">
+      <section class="work-first-view">
+        <div class="work-first-view__media">
+          <section class="work-gallery-switch" aria-label="祖母の家 ギャラリー" data-gallery>
+            <div class="work-gallery-switch__main" aria-live="polite">
+              <img
+                src="../Assets/placeholders/grandmas-house-01.svg"
+                alt="祖母の家 外観"
+                data-gallery-main
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div class="work-gallery-switch__thumbs" role="listbox" aria-label="ギャラリーサムネイル" data-gallery-thumbs>
+              <button
+                class="work-gallery-switch__thumb is-active"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-01.svg"
+                data-full-alt="祖母の家 外観"
+              >
+                <img src="../Assets/placeholders/grandmas-house-01.svg" alt="祖母の家 外観 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-02.svg"
+                data-full-alt="祖母の家 和室"
+              >
+                <img src="../Assets/placeholders/grandmas-house-02.svg" alt="祖母の家 和室 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-03.svg"
+                data-full-alt="祖母の家 縁側"
+              >
+                <img src="../Assets/placeholders/grandmas-house-03.svg" alt="祖母の家 縁側 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-04.svg"
+                data-full-alt="祖母の家 台所"
+              >
+                <img src="../Assets/placeholders/grandmas-house-04.svg" alt="祖母の家 台所 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-05.svg"
+                data-full-alt="祖母の家 玄関"
+              >
+                <img src="../Assets/placeholders/grandmas-house-05.svg" alt="祖母の家 玄関 サムネイル" loading="lazy" decoding="async" />
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <div class="work-first-view__content">
+          <p class="work-first-view__meta">
+            <span class="work-badge work-badge--category">ワールド</span>
+            <span class="work-badge work-badge--availability">非売品</span>
+          </p>
+          <ul class="work-subtags" aria-label="サブタグ">
+            <li>和室</li>
+            <li>ノスタルジー</li>
+            <li>生活感</li>
+          </ul>
+          <h1 id="work-title">祖母の家</h1>
+          <p class="work-first-view__en">Grandma's House</p>
+          <p class="work-first-view__lead">
+            昭和の暮らしの温度を残した祖母の家を、VRChatでゆっくり過ごせるワールドとして再構成しました。
+            柔らかい光と木の質感に包まれながら、会話・撮影・小休憩を自然に楽しめます。
+          </p>
+
+          <div class="work-cta-row" aria-label="主要リンク">
+            <a class="work-link work-link--vrchat" href="https://vrchat.com/home/world/wrld_example" target="_blank" rel="noopener noreferrer">VRChatで開く</a>
+            <button class="work-link work-link--detail" type="button" data-copy-text="Grandma's House / 祖母の家 / ワールドID: wrld_example">ワールド情報をコピー</button>
+          </div>
+          <p class="work-first-view__note">※ VRChatリンクはログイン状態のブラウザで開いてください。</p>
+        </div>
+      </section>
+
+      <section class="work-overview" aria-labelledby="overview-title">
+        <div class="work-overview__panel">
+          <h2 id="overview-title">作品概要</h2>
+          <p>
+            「祖母の家」は、静かな午後の空気や生活の痕跡を丁寧に重ねた、滞在体験重視のVRChatワールドです。
+            眺めるだけでなく、腰を下ろして過ごしたくなる距離感を大切にしています。
+          </p>
+          <h3>見どころ</h3>
+          <ul>
+            <li>木漏れ日が差し込む縁側と庭の奥行き</li>
+            <li>和室・台所・玄関それぞれの生活感ある質感設計</li>
+            <li>撮影にも会話にも使いやすい光量バランス</li>
+          </ul>
+        </div>
+
+        <div class="work-overview__panel">
+          <h2>こんな方におすすめ</h2>
+          <ul>
+            <li>落ち着いたワールドでのんびり過ごしたい方</li>
+            <li>和風・ノスタルジー系の撮影スポットを探している方</li>
+            <li>少人数で会話しやすい空間を求めている方</li>
+          </ul>
+          <blockquote>
+            「あの頃の、やさしい時間をもう一度。」
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="work-folds" aria-label="詳細情報">
+        <details class="work-fold" open>
+          <summary>仕様情報</summary>
+          <div class="work-fold__content">
+            <dl>
+              <dt>ポリゴン数</dt><dd>約 1.2M（ワールド全体）</dd>
+              <dt>容量</dt><dd>約 118MB（Windows）</dd>
+              <dt>対応環境</dt><dd>VRChat PC</dd>
+              <dt>推奨環境</dt><dd>VRAM 6GB 以上 / 16GB RAM 以上</dd>
+              <dt>更新日</dt><dd>2026-04-24</dd>
+              <dt>制作ソフト</dt><dd>Unity / Blender</dd>
+            </dl>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>内容物</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li>WorldScene.unity</li>
+              <li>Prefab（室内・庭・小物）</li>
+              <li>Material / Texture（木材・障子・庭素材）</li>
+              <li>Lighting設定・PostProcess設定</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>利用について</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li>ワールド内撮影画像のSNS投稿は歓迎です。</li>
+              <li>再配布・無断改変・なりすまし公開はご遠慮ください。</li>
+              <li>クレジット表記は「naochan world」でお願いします。</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>関連リンク</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li><a href="../index.html#records">制作日記（準備中）</a></li>
+              <li><a href="../index.html#records">ギミック資料</a></li>
+              <li><a href="../works.html">関連作品をみる</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>
