@@ -185,6 +185,79 @@
     return link;
   }
 
+  function initWorkGallerySwitch() {
+    var galleries = document.querySelectorAll("[data-gallery]");
+
+    Array.prototype.forEach.call(galleries, function (gallery) {
+      var mainImage = gallery.querySelector("[data-gallery-main]");
+      var thumbs = gallery.querySelectorAll("[data-gallery-thumb]");
+      var thumbsContainer = gallery.querySelector("[data-gallery-thumbs]");
+      var activeIndex = 0;
+
+      if (!(mainImage instanceof HTMLImageElement) || thumbs.length === 0) {
+        return;
+      }
+
+      function activateThumb(index, focusThumb) {
+        if (index < 0 || index >= thumbs.length) {
+          return;
+        }
+
+        activeIndex = index;
+
+        Array.prototype.forEach.call(thumbs, function (thumb, thumbIndex) {
+          var isActive = thumbIndex === activeIndex;
+          var fullSrc = thumb.getAttribute("data-full-src") || "";
+          var fullAlt = thumb.getAttribute("data-full-alt") || "作品画像";
+
+          thumb.classList.toggle("is-active", isActive);
+          thumb.setAttribute("aria-selected", isActive ? "true" : "false");
+
+          if (isActive && fullSrc) {
+            mainImage.src = fullSrc;
+            mainImage.alt = fullAlt;
+          }
+        });
+
+        if (focusThumb) {
+          thumbs[activeIndex].focus();
+        }
+      }
+
+      Array.prototype.forEach.call(thumbs, function (thumb, thumbIndex) {
+        thumb.addEventListener("click", function () {
+          activateThumb(thumbIndex, false);
+        });
+      });
+
+      if (thumbsContainer) {
+        thumbsContainer.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            activateThumb((activeIndex + 1) % thumbs.length, true);
+          }
+
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            activateThumb((activeIndex - 1 + thumbs.length) % thumbs.length, true);
+          }
+
+          if (event.key === "Home") {
+            event.preventDefault();
+            activateThumb(0, true);
+          }
+
+          if (event.key === "End") {
+            event.preventDefault();
+            activateThumb(thumbs.length - 1, true);
+          }
+        });
+      }
+
+      activateThumb(0, false);
+    });
+  }
+
   function initCopyButtons() {
     var copyButtons = document.querySelectorAll("[data-copy-text]");
 
@@ -386,6 +459,7 @@
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
+  initWorkGallerySwitch();
   initCopyButtons();
   initWorksPage();
 })();

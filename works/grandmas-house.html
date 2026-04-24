@@ -71,11 +71,75 @@
 
     <article class="work-detail-shell" aria-labelledby="work-title">
       <section class="work-first-view">
-        <div class="work-first-view__media" aria-label="祖母の家 メインビジュアル">
-          <div class="work-image-placeholder work-image-placeholder--hero">
-            <span>Main Visual</span>
-            <strong>祖母の家</strong>
-          </div>
+        <div class="work-first-view__media">
+          <section class="work-gallery-switch" aria-label="祖母の家 ギャラリー" data-gallery>
+            <div class="work-gallery-switch__main" aria-live="polite">
+              <img
+                src="../Assets/placeholders/grandmas-house-01.svg"
+                alt="祖母の家 外観"
+                data-gallery-main
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div class="work-gallery-switch__thumbs" role="listbox" aria-label="ギャラリーサムネイル" data-gallery-thumbs>
+              <button
+                class="work-gallery-switch__thumb is-active"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-01.svg"
+                data-full-alt="祖母の家 外観"
+              >
+                <img src="../Assets/placeholders/grandmas-house-01.svg" alt="祖母の家 外観 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-02.svg"
+                data-full-alt="祖母の家 和室"
+              >
+                <img src="../Assets/placeholders/grandmas-house-02.svg" alt="祖母の家 和室 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-03.svg"
+                data-full-alt="祖母の家 縁側"
+              >
+                <img src="../Assets/placeholders/grandmas-house-03.svg" alt="祖母の家 縁側 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-04.svg"
+                data-full-alt="祖母の家 台所"
+              >
+                <img src="../Assets/placeholders/grandmas-house-04.svg" alt="祖母の家 台所 サムネイル" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/placeholders/grandmas-house-05.svg"
+                data-full-alt="祖母の家 玄関"
+              >
+                <img src="../Assets/placeholders/grandmas-house-05.svg" alt="祖母の家 玄関 サムネイル" loading="lazy" decoding="async" />
+              </button>
+            </div>
+          </section>
         </div>
 
         <div class="work-first-view__content">
@@ -100,17 +164,6 @@
             <button class="work-link work-link--detail" type="button" data-copy-text="Grandma's House / 祖母の家 / ワールドID: wrld_example">ワールド情報をコピー</button>
           </div>
           <p class="work-first-view__note">※ VRChatリンクはログイン状態のブラウザで開いてください。</p>
-        </div>
-      </section>
-
-      <section class="work-gallery" aria-labelledby="gallery-title">
-        <h2 id="gallery-title">ギャラリー</h2>
-        <div class="work-gallery__grid">
-          <figure class="work-gallery__item"><div class="work-image-placeholder"><span>Gallery</span><strong>外観</strong></div></figure>
-          <figure class="work-gallery__item"><div class="work-image-placeholder"><span>Gallery</span><strong>和室</strong></div></figure>
-          <figure class="work-gallery__item"><div class="work-image-placeholder"><span>Gallery</span><strong>縁側</strong></div></figure>
-          <figure class="work-gallery__item"><div class="work-image-placeholder"><span>Gallery</span><strong>台所</strong></div></figure>
-          <figure class="work-gallery__item"><div class="work-image-placeholder"><span>Gallery</span><strong>玄関</strong></div></figure>
         </div>
       </section>
 
