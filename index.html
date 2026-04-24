@@ -57,19 +57,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <button class="top-flow-menu__major is-current" type="button" role="menuitem" data-major="works">
-          作品
-        </button>
+        <a class="top-flow-menu__major" role="menuitem" href="./works.html" data-menu-link>作品</a>
         <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">
           解説・記録
         </button>
-        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="profile">
-          プロフィール
-        </button>
+        <a class="top-flow-menu__major" role="menuitem" href="#profile" data-menu-link>プロフィール</a>
         <a
           class="top-flow-menu__major"
           role="menuitem"
-          data-major="booth"
           href="https://naochan-shop.booth.pm/"
           target="_blank"
           rel="noopener noreferrer"
@@ -79,22 +74,9 @@
       </div>
 
       <div class="top-flow-menu__subrows" data-subrows>
-        <div class="top-flow-menu__subrow is-active" data-subrow="works">
-          <a href="#works" data-menu-link>ワールド</a>
-          <a href="#works" data-menu-link>3Dモデル</a>
-          <a href="#works" data-menu-link>ギミック</a>
-          <a href="#works" data-menu-link>イラスト</a>
-          <a href="#works" data-menu-link>その他</a>
-        </div>
-        <div class="top-flow-menu__subrow" data-subrow="records">
-          <a href="#records" data-menu-link>制作背景</a>
-          <a href="#records" data-menu-link>技術メモ</a>
-          <a href="#records" data-menu-link>進捗ログ</a>
-        </div>
-        <div class="top-flow-menu__subrow" data-subrow="profile">
-          <a href="#profile" data-menu-link>自己紹介</a>
-          <a href="#profile" data-menu-link>創作の想い</a>
-          <a href="#profile" data-menu-link>活動リンク</a>
+        <div class="top-flow-menu__subrow is-active" data-subrow="records">
+          <a href="#records" data-menu-link>ギミック資料</a>
+          <a href="#records" data-menu-link>制作日記</a>
         </div>
       </div>
     </nav>
@@ -124,7 +106,7 @@
           </p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#works">作品を見る</a>
+            <a class="button button--primary" href="./works.html">作品を見る</a>
             <a class="button button--secondary" href="#profile">プロフィール</a>
             <a
               class="button button--secondary"
@@ -147,7 +129,7 @@
         </div>
 
         <div class="guide__grid">
-          <article class="guide-card" id="works">
+          <a class="guide-card" id="works" href="./works.html">
             <div class="guide-card__media" aria-hidden="true">
               <img
                 src="./Assets/AIGenerate/card-works-sprout.svg"
@@ -162,7 +144,7 @@
               <p>世界観や作品に触れる</p>
               <span class="guide-card__action" aria-hidden="true"></span>
             </div>
-          </article>
+          </a>
 
           <article class="guide-card" id="records">
             <div class="guide-card__media" aria-hidden="true">
