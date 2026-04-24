@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="なおちゃんの世界の作品一覧ページ。完成済み・公開済みの作品だけを並べた展示棚です。"
+  />
+  <title>作品一覧 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="works-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="./index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="./Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major is-current" role="menuitem" href="./works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="./index.html#profile" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow is-active" data-subrow="records">
+          <a href="./index.html#records" data-menu-link>ギミック資料</a>
+          <a href="./index.html#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" class="works-main">
+    <section class="works-hero" aria-labelledby="works-title">
+      <div class="works-hero__inner">
+        <p class="works-hero__eyebrow">Works Shelf</p>
+        <h1 id="works-title">作品</h1>
+        <p class="works-hero__lead">完成済み・公開済みの作品だけを並べる展示棚です。</p>
+      </div>
+    </section>
+
+    <section class="works-section" aria-labelledby="works-filter-title" data-works-root data-source="./data/works.json">
+      <h2 class="sr-only" id="works-filter-title">作品一覧フィルター</h2>
+      <div class="works-filter" data-works-filter role="tablist" aria-label="作品カテゴリー"></div>
+      <p class="works-note">※ 現在は仮サンプルを掲載中です。実作品へ差し替えしやすい構成で実装しています。</p>
+      <div class="works-grid" data-works-grid></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

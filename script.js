@@ -43,9 +43,7 @@
 
     function activateMajor(key) {
       Array.prototype.forEach.call(majorItems, function (item) {
-        if (item.tagName === "BUTTON") {
-          item.classList.toggle("is-current", item.getAttribute("data-major") === key);
-        }
+        item.classList.toggle("is-current", item.getAttribute("data-major") === key);
       });
 
       Array.prototype.forEach.call(subRows, function (row) {
@@ -63,12 +61,13 @@
         }
       });
 
-      item.addEventListener("click", function () {
+      item.addEventListener("click", function (event) {
         if (!opened) {
           openMenu();
         }
 
         if (hasSubRow) {
+          event.preventDefault();
           activateMajor(key);
         }
       });
@@ -92,18 +91,19 @@
       });
     });
 
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && opened) {
+    document.addEventListener("click", function (event) {
+      if (!opened) {
+        return;
+      }
+
+      if (!panel.contains(event.target) && !toggle.contains(event.target)) {
         closeMenu();
       }
     });
 
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 860 && opened) {
-        var current = panel.querySelector(".top-flow-menu__major.is-current");
-        if (current) {
-          activateMajor(current.getAttribute("data-major"));
-        }
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && opened) {
+        closeMenu();
       }
     });
   }
@@ -155,7 +155,166 @@
     });
   }
 
+  function createLinkButton(label, href, kind, external) {
+    var link = document.createElement("a");
+
+    link.className = "work-link work-link--" + kind;
+    link.href = href;
+    link.textContent = label;
+
+    if (external) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+
+    return link;
+  }
+
+  function initWorksPage() {
+    var root = document.querySelector("[data-works-root]");
+
+    if (!root) {
+      return;
+    }
+
+    var filterContainer = root.querySelector("[data-works-filter]");
+    var grid = root.querySelector("[data-works-grid]");
+    var source = root.getAttribute("data-source") || "./data/works.json";
+
+    if (!filterContainer || !grid) {
+      return;
+    }
+
+    fetch(source)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("作品データを読み込めませんでした。");
+        }
+
+        return response.json();
+      })
+      .then(function (data) {
+        var categoryOrder = Array.isArray(data.categories) ? data.categories : ["すべて"];
+        var works = Array.isArray(data.works) ? data.works : [];
+        var activeCategory = "すべて";
+
+        function renderFilter() {
+          filterContainer.innerHTML = "";
+
+          categoryOrder.forEach(function (category) {
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "works-filter__button";
+            button.textContent = category;
+            button.setAttribute("role", "tab");
+            button.setAttribute("aria-selected", category === activeCategory ? "true" : "false");
+
+            if (category === activeCategory) {
+              button.classList.add("is-active");
+            }
+
+            button.addEventListener("click", function () {
+              activeCategory = category;
+              renderFilter();
+              renderCards();
+            });
+
+            filterContainer.appendChild(button);
+          });
+        }
+
+        function renderCards() {
+          var visibleWorks = works.filter(function (item) {
+            return activeCategory === "すべて" || item.category === activeCategory;
+          });
+
+          grid.innerHTML = "";
+
+          visibleWorks.forEach(function (item) {
+            var card = document.createElement("article");
+            var media = document.createElement("div");
+            var body = document.createElement("div");
+            var labels = document.createElement("div");
+            var category = document.createElement("span");
+            var availability = document.createElement("span");
+            var title = document.createElement("h3");
+            var description = document.createElement("p");
+            var tags = document.createElement("ul");
+            var actions = document.createElement("div");
+            var detailUrl = item.links && item.links.detail ? item.links.detail : "#";
+
+            card.className = "work-card";
+            media.className = "work-card__media";
+            body.className = "work-card__body";
+            labels.className = "work-card__labels";
+            category.className = "work-badge work-badge--category";
+            availability.className = "work-badge work-badge--availability";
+            tags.className = "work-tags";
+            actions.className = "work-actions";
+
+            if (item.thumbnail) {
+              var img = document.createElement("img");
+              img.src = item.thumbnail;
+              img.alt = item.title + " のサムネイル";
+              img.loading = "lazy";
+              media.appendChild(img);
+            } else {
+              var fallback = document.createElement("div");
+              fallback.className = "work-card__placeholder";
+              fallback.innerHTML = '<span>Sample</span><strong>' + item.title + "</strong>";
+              media.appendChild(fallback);
+            }
+
+            category.textContent = item.category;
+            availability.textContent = item.availability;
+            labels.appendChild(category);
+            labels.appendChild(availability);
+
+            title.textContent = item.title;
+            description.textContent = item.description;
+
+            (item.tags || []).forEach(function (tag) {
+              var tagItem = document.createElement("li");
+              tagItem.textContent = tag;
+              tags.appendChild(tagItem);
+            });
+
+            actions.appendChild(createLinkButton("詳細を見る", detailUrl, "detail", false));
+
+            if (item.links && item.links.vrchat) {
+              actions.appendChild(createLinkButton("VRChatで開く", item.links.vrchat, "vrchat", true));
+            }
+
+            if (item.links && item.links.booth) {
+              actions.appendChild(createLinkButton("BOOTHで見る", item.links.booth, "booth", true));
+            }
+
+            if (item.links && item.links.download) {
+              actions.appendChild(createLinkButton("ダウンロード", item.links.download, "download", false));
+            }
+
+            body.appendChild(labels);
+            body.appendChild(title);
+            body.appendChild(description);
+            body.appendChild(tags);
+            body.appendChild(actions);
+
+            card.appendChild(media);
+            card.appendChild(body);
+            grid.appendChild(card);
+          });
+        }
+
+        renderFilter();
+        renderCards();
+      })
+      .catch(function () {
+        grid.innerHTML = '<p class="works-error">作品データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
+      });
+  }
+
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
+  initWorksPage();
 })();
