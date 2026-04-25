@@ -263,7 +263,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .top-flow-menu__subrows {
   display: none;
-  margin-top: 0.62rem;
+  margin-top: 0;
+  padding-top: 0.62rem;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.62);
   background: linear-gradient(180deg, rgba(177, 210, 243, 0.4), rgba(228, 241, 253, 0.82));
@@ -273,7 +274,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 .top-flow-menu__subrow {
   display: none;
-  padding: 0.7rem;
+  padding: 0 0.7rem 0.7rem;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.42rem;
 }
@@ -453,6 +454,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .top-flow-menu__subrows {
     background: transparent;
     margin-top: 0.25rem;
+    padding-top: 0;
     gap: 0.45rem;
   }
   .top-flow-menu__subrows.has-subrow { display: grid; }

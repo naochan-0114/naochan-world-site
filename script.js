@@ -15,16 +15,19 @@
     var toggle = document.querySelector("[data-menu-toggle]");
     var closeButton = document.querySelector("[data-menu-close]");
     var majorItems = panel ? panel.querySelectorAll("[data-major]") : [];
+    var topLevelItems = panel ? panel.querySelectorAll(".top-flow-menu__major") : [];
     var subRows = panel ? panel.querySelectorAll("[data-subrow]") : [];
     var subRowsWrapper = panel ? panel.querySelector("[data-subrows]") : null;
     var menuLinks = panel ? panel.querySelectorAll("[data-menu-link]") : [];
     var opened = false;
+    var subrowCloseTimer = 0;
 
     if (!panel || !toggle || !closeButton) {
       return;
     }
 
     function openMenu() {
+      clearSubrowCloseTimer();
       opened = true;
       body.classList.add("menu-open");
       panel.classList.add("is-open");
@@ -34,6 +37,7 @@
     }
 
     function closeMenu() {
+      clearSubrowCloseTimer();
       opened = false;
       body.classList.remove("menu-open");
       panel.classList.remove("is-open");
@@ -43,8 +47,23 @@
       activateMajor("");
     }
 
+    function clearSubrowCloseTimer() {
+      window.clearTimeout(subrowCloseTimer);
+      subrowCloseTimer = 0;
+    }
+
+    function scheduleDeactivateMajor() {
+      clearSubrowCloseTimer();
+
+      subrowCloseTimer = window.setTimeout(function () {
+        activateMajor("");
+      }, 180);
+    }
+
     function activateMajor(key) {
       var hasActiveSubRow = false;
+
+      clearSubrowCloseTimer();
 
       Array.prototype.forEach.call(majorItems, function (item) {
         item.classList.toggle("is-current", item.getAttribute("data-major") === key);
@@ -64,13 +83,43 @@
       }
     }
 
-    Array.prototype.forEach.call(majorItems, function (item) {
+    function isInsideSubMenuTarget(target, key) {
+      if (!(target instanceof Element) || !key) {
+        return false;
+      }
+
+      return Boolean(
+        target.closest('[data-major="' + key + '"]') ||
+        target.closest('[data-subrow="' + key + '"]') ||
+        (subRowsWrapper && subRowsWrapper.contains(target))
+      );
+    }
+
+    Array.prototype.forEach.call(topLevelItems, function (item) {
       var key = item.getAttribute("data-major");
-      var hasSubRow = panel.querySelector('[data-subrow="' + key + '"]');
+      var hasSubRow = key ? panel.querySelector('[data-subrow="' + key + '"]') : null;
 
       item.addEventListener("mouseenter", function () {
-        if (opened && hasSubRow) {
-          activateMajor(key);
+        if (!opened) {
+          return;
+        }
+
+        clearSubrowCloseTimer();
+        activateMajor(hasSubRow ? key : "");
+      });
+
+      item.addEventListener("focus", function () {
+        if (!opened) {
+          return;
+        }
+
+        clearSubrowCloseTimer();
+        activateMajor(hasSubRow ? key : "");
+      });
+
+      item.addEventListener("mouseleave", function (event) {
+        if (opened && hasSubRow && !isInsideSubMenuTarget(event.relatedTarget, key)) {
+          scheduleDeactivateMajor();
         }
       });
 
@@ -81,9 +130,39 @@
 
         if (hasSubRow) {
           event.preventDefault();
+          clearSubrowCloseTimer();
           activateMajor(key);
         }
       });
+    });
+
+    Array.prototype.forEach.call(subRows, function (row) {
+      var key = row.getAttribute("data-subrow");
+
+      row.addEventListener("mouseleave", function (event) {
+        if (opened && !isInsideSubMenuTarget(event.relatedTarget, key)) {
+          scheduleDeactivateMajor();
+        }
+      });
+    });
+
+    if (subRowsWrapper) {
+      subRowsWrapper.addEventListener("mouseenter", function () {
+        clearSubrowCloseTimer();
+      });
+
+      subRowsWrapper.addEventListener("mouseleave", function (event) {
+        if (opened && !(event.relatedTarget instanceof Element && event.relatedTarget.closest("[data-major]"))) {
+          scheduleDeactivateMajor();
+        }
+      });
+    }
+
+    panel.addEventListener("mouseleave", function () {
+      if (opened) {
+        clearSubrowCloseTimer();
+        activateMajor("");
+      }
     });
 
     toggle.addEventListener("click", function () {
@@ -166,6 +245,23 @@
       window.scrollTo({
         top: Math.max(0, top),
         behavior: reduceMotionQuery.matches ? "auto" : "smooth"
+      });
+    });
+  }
+
+  function initDirectLinks() {
+    var links = document.querySelectorAll("[data-direct-link]");
+
+    Array.prototype.forEach.call(links, function (link) {
+      link.addEventListener("click", function (event) {
+        var href = link.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        event.preventDefault();
+        window.location.assign(link.href);
       });
     });
   }
@@ -459,6 +555,7 @@
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
+  initDirectLinks();
   initWorkGallerySwitch();
   initCopyButtons();
   initWorksPage();
