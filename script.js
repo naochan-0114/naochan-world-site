@@ -288,10 +288,22 @@
       var mainImage = gallery.querySelector("[data-gallery-main]");
       var thumbs = gallery.querySelectorAll("[data-gallery-thumb]");
       var thumbsContainer = gallery.querySelector("[data-gallery-thumbs]");
+      var mainFrame = mainImage ? mainImage.closest(".work-gallery-switch__main") : null;
       var activeIndex = 0;
 
       if (!(mainImage instanceof HTMLImageElement) || thumbs.length === 0) {
         return;
+      }
+
+      function createGalleryArrow(direction, label) {
+        var button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "work-gallery-switch__arrow work-gallery-switch__arrow--" + direction;
+        button.setAttribute("aria-label", label);
+        button.textContent = direction === "prev" ? "‹" : "›";
+
+        return button;
       }
 
       function activateThumb(index, focusThumb) {
@@ -318,6 +330,26 @@
         if (focusThumb) {
           thumbs[activeIndex].focus();
         }
+      }
+
+      function activateRelativeThumb(step) {
+        activateThumb((activeIndex + step + thumbs.length) % thumbs.length, false);
+      }
+
+      if (mainFrame && thumbs.length > 1) {
+        var prevButton = createGalleryArrow("prev", "前の画像を表示");
+        var nextButton = createGalleryArrow("next", "次の画像を表示");
+
+        prevButton.addEventListener("click", function () {
+          activateRelativeThumb(-1);
+        });
+
+        nextButton.addEventListener("click", function () {
+          activateRelativeThumb(1);
+        });
+
+        mainFrame.appendChild(prevButton);
+        mainFrame.appendChild(nextButton);
       }
 
       Array.prototype.forEach.call(thumbs, function (thumb, thumbIndex) {
@@ -351,39 +383,6 @@
       }
 
       activateThumb(0, false);
-    });
-  }
-
-  function initCopyButtons() {
-    var copyButtons = document.querySelectorAll("[data-copy-text]");
-
-    Array.prototype.forEach.call(copyButtons, function (button) {
-      if (!(button instanceof HTMLButtonElement)) {
-        return;
-      }
-
-      button.addEventListener("click", function () {
-        var copyText = button.getAttribute("data-copy-text") || "";
-        var originalText = button.textContent || "コピー";
-
-        if (!copyText) {
-          return;
-        }
-
-        navigator.clipboard.writeText(copyText)
-          .then(function () {
-            button.textContent = "コピーしました";
-            setTimeout(function () {
-              button.textContent = originalText;
-            }, 1600);
-          })
-          .catch(function () {
-            button.textContent = "コピー失敗";
-            setTimeout(function () {
-              button.textContent = originalText;
-            }, 1600);
-          });
-      });
     });
   }
 
@@ -557,6 +556,5 @@
   initSmoothAnchorScroll();
   initDirectLinks();
   initWorkGallerySwitch();
-  initCopyButtons();
   initWorksPage();
 })();

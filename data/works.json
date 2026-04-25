@@ -12,6 +12,23 @@
   ],
   "works": [
     {
+      "id": "ayumi-3dmodel",
+      "title": "あゆみ",
+      "category": "アバター",
+      "availability": "販売品",
+      "description": "VRChat向けの3Dキャラクター。BOOTHで公開しているオリジナルアバターです。",
+      "tags": [
+        "VRChat",
+        "3Dキャラクター",
+        "BOOTH"
+      ],
+      "thumbnail": "./Assets/booth/ayumi-main.jpg",
+      "links": {
+        "detail": "./works/ayumi.html",
+        "booth": "https://naochan-shop.booth.pm/items/4711420"
+      }
+    },
+    {
       "id": "sample-grandma-house",
       "title": "祖母の家",
       "category": "ワールド",
