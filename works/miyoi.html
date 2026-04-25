@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Miyoi | 3DModel の作品詳細ページ。VRChat向けのオリジナル3Dアバターを紹介します。"
+  />
+  <title>Miyoi | 作品詳細 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="work-detail-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major is-current" role="menuitem" href="../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../index.html#profile" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../index.html#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="work-detail-main" id="top">
+    <nav class="breadcrumbs" aria-label="パンくず">
+      <ol>
+        <li><a href="../index.html#top" data-direct-link>トップ</a></li>
+        <li><a href="../works.html" data-direct-link>作品一覧</a></li>
+        <li aria-current="page">Miyoi</li>
+      </ol>
+    </nav>
+
+    <article class="work-detail-shell" aria-labelledby="work-title">
+      <section class="work-first-view work-first-view--product">
+        <div class="work-first-view__media">
+          <section class="work-gallery-switch work-gallery-switch--product" aria-label="Miyoi ギャラリー" data-gallery>
+            <div class="work-gallery-switch__main" aria-live="polite">
+              <img
+                src="../Assets/booth/miyoi-01.png"
+                alt="Miyoi 3DModel"
+                data-gallery-main
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div class="work-gallery-switch__thumbs" role="listbox" aria-label="ギャラリーサムネイル" data-gallery-thumbs>
+              <button
+                class="work-gallery-switch__thumb is-active"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-gallery-thumb
+                data-full-src="../Assets/booth/miyoi-01.png"
+                data-full-alt="Miyoi 3DModel"
+              >
+                <img src="../Assets/booth/miyoi-01.png" alt="Miyoi サムネイル 1" loading="lazy" decoding="async" />
+              </button>
+              <button
+                class="work-gallery-switch__thumb"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-gallery-thumb
+                data-full-src="../Assets/booth/miyoi-02.png"
+                data-full-alt="Miyoi 商品画像 2"
+              >
+                <img src="../Assets/booth/miyoi-02.png" alt="Miyoi サムネイル 2" loading="lazy" decoding="async" />
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <div class="work-first-view__content">
+          <p class="work-first-view__meta">
+            <span class="work-badge work-badge--category">アバター</span>
+            <span class="work-badge work-badge--availability">無料配布 / 応援版あり</span>
+          </p>
+          <ul class="work-subtags" aria-label="サブタグ">
+            <li>VRChat</li>
+            <li>3Dキャラクター</li>
+            <li>BOOTH</li>
+            <li>無料配布</li>
+          </ul>
+          <h1 id="work-title">Miyoi</h1>
+          <p class="work-first-view__en">みよい | 3DModel</p>
+          <p class="work-first-view__lead">
+            魔法使い風の帽子とマント、杖が特徴のVRChat向けオリジナル3Dアバターです。
+          </p>
+
+          <p class="work-price"><span>価格</span>通常版 ¥0 / 応援版 ¥500</p>
+          <div class="work-cta-row" aria-label="主要リンク">
+            <a class="work-link work-link--booth" href="https://naochan-shop.booth.pm/items/5523109" target="_blank" rel="noopener noreferrer">BOOTHで見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-overview" aria-labelledby="overview-title">
+        <div class="work-overview__panel">
+          <h2 id="overview-title">作品概要</h2>
+          <p>
+            「Miyoi」は、魔法使いのような衣装と大きな帽子、杖を持ったオリジナルアバターです。
+            通常版に加えて、制作データを含む応援版も用意しています。
+          </p>
+          <h3>ポイント</h3>
+          <ul>
+            <li>大きな帽子とマントの魔法使い風デザイン</li>
+            <li>杖や装飾まで含めたシルエット</li>
+            <li>通常版と、Blenderファイル等を含む応援版</li>
+          </ul>
+        </div>
+
+        <div class="work-overview__panel">
+          <h2>3Dモデル情報</h2>
+          <ul>
+            <li>合計ポリゴン数: 60,435△</li>
+            <li>テクスチャ総数: 4</li>
+            <li>マテリアル総数: 8</li>
+            <li>オブジェクト総数: 13（ボーンを除く）</li>
+            <li>導入前提: VRCSDK avatar3.0 / lilToon</li>
+          </ul>
+          <blockquote>
+            詳しい仕様や利用条件は、BOOTHの商品ページで確認できます。
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="work-folds" aria-label="詳細情報">
+        <details class="work-fold" open>
+          <summary>事前準備</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li>VRCSDK avatar3.0</li>
+              <li>lilToon</li>
+              <li>上記2点を先にインポートしてから、UnityPackageを導入してください。</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>同梱データ</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li>通常版: Miyoi_Ver~.~.unitypackage</li>
+              <li>応援版: Blenderファイル（ARP / FBX出力用）</li>
+              <li>応援版: Textureファイル（PNG）</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>利用前の確認</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li>ダウンロード商品のため、応援版の返金・返品の対応はできません（詳細はBOOTH商品ページをご確認ください）。</li>
+              <li>アップデート時はバックアップを取ったうえで適用してください。</li>
+              <li><a href="https://drive.google.com/file/d/15oMjE0YrbkTMf-ydiKPfOpCg1PoXjJlL/view?usp=sharing" target="_blank" rel="noopener noreferrer">利用規約はこちら</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="work-fold">
+          <summary>関連リンク</summary>
+          <div class="work-fold__content">
+            <ul>
+              <li><a href="https://naochan-shop.booth.pm/items/5523109" target="_blank" rel="noopener noreferrer">BOOTHの商品ページ</a></li>
+              <li><a href="https://youtu.be/SIRJnZF_II4" target="_blank" rel="noopener noreferrer">タイムラプス</a></li>
+              <li><a href="../works.html">作品一覧に戻る</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

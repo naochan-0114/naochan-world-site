@@ -473,6 +473,9 @@
               img.src = item.thumbnail;
               img.alt = item.title + " のサムネイル";
               img.loading = "lazy";
+              if (item.thumbnailPosition) {
+                img.style.objectPosition = item.thumbnailPosition;
+              }
               media.appendChild(img);
             } else {
               var fallback = document.createElement("div");

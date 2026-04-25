@@ -12,6 +12,24 @@
   ],
   "works": [
     {
+      "id": "miyoi-3dmodel",
+      "title": "Miyoi",
+      "category": "アバター",
+      "availability": "無料配布 / 応援版あり",
+      "description": "魔法使い風の帽子とマント、杖が特徴のVRChat向けオリジナル3Dアバターです。",
+      "tags": [
+        "VRChat",
+        "3Dキャラクター",
+        "BOOTH",
+        "無料配布"
+      ],
+      "thumbnail": "./Assets/booth/miyoi-main.png",
+      "links": {
+        "detail": "./works/miyoi.html",
+        "booth": "https://naochan-shop.booth.pm/items/5523109"
+      }
+    },
+    {
       "id": "ayumi-3dmodel",
       "title": "あゆみ",
       "category": "アバター",
@@ -23,6 +41,7 @@
         "BOOTH"
       ],
       "thumbnail": "./Assets/booth/ayumi-main.jpg",
+      "thumbnailPosition": "center top",
       "links": {
         "detail": "./works/ayumi.html",
         "booth": "https://naochan-shop.booth.pm/items/4711420"

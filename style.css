@@ -1034,11 +1034,13 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .work-price {
   display: inline-flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 0.7rem;
   margin: 1.1rem 0 0;
   color: var(--ink-strong);
   font-size: 2.1rem;
   font-weight: 900;
+  line-height: 1.25;
   letter-spacing: 0.03em;
 }
 
