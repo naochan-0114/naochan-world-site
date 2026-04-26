@@ -10,6 +10,31 @@
     "ゲーム",
     "その他"
   ],
+  "tagGroups": [
+    {
+      "label": "プラットフォーム",
+      "tags": [
+        "VRChat"
+      ]
+    },
+    {
+      "label": "配布形式",
+      "tags": [
+        "販売品",
+        "非売品",
+        "無料配布"
+      ]
+    },
+    {
+      "label": "雰囲気",
+      "tags": [
+        "ノスタルジー",
+        "生活感",
+        "和室",
+        "ファンタジー"
+      ]
+    }
+  ],
   "works": [
     {
       "id": "miyoi-3dmodel",
@@ -22,6 +47,11 @@
         "3Dキャラクター",
         "BOOTH",
         "無料配布"
+      ],
+      "filterTags": [
+        "VRChat",
+        "無料配布",
+        "ファンタジー"
       ],
       "thumbnail": "./Assets/booth/miyoi-main.png",
       "links": {
@@ -39,6 +69,10 @@
         "VRChat",
         "3Dキャラクター",
         "BOOTH"
+      ],
+      "filterTags": [
+        "VRChat",
+        "販売品"
       ],
       "thumbnail": "./Assets/booth/ayumi-main.jpg",
       "thumbnailPosition": "center top",
@@ -58,44 +92,17 @@
         "ノスタルジー",
         "生活感"
       ],
+      "filterTags": [
+        "VRChat",
+        "非売品",
+        "和室",
+        "ノスタルジー",
+        "生活感"
+      ],
       "thumbnail": "",
       "links": {
         "detail": "./works/grandmas-house.html",
         "vrchat": "https://vrchat.com/home/world/wrld_example"
-      }
-    },
-    {
-      "id": "sample-fusuma-gimmick",
-      "title": "ふすま開閉ギミック",
-      "category": "ギミック",
-      "availability": "販売品",
-      "description": "VRChatワールド向けの襖・引き戸用ギミック。",
-      "tags": [
-        "扉",
-        "和室",
-        "インタラクト"
-      ],
-      "thumbnail": "",
-      "links": {
-        "detail": "#",
-        "booth": "https://naochan-shop.booth.pm/"
-      }
-    },
-    {
-      "id": "sample-showa-remote",
-      "title": "昭和風リモコン",
-      "category": "小物",
-      "availability": "無料配布",
-      "description": "VRChatワールドに置ける、レトロな雰囲気の小物モデル。",
-      "tags": [
-        "生活感",
-        "レトロ",
-        "家具小物"
-      ],
-      "thumbnail": "",
-      "links": {
-        "detail": "#",
-        "download": "#"
       }
     }
   ]

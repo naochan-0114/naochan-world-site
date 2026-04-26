@@ -394,6 +394,10 @@
     }
 
     var filterContainer = root.querySelector("[data-works-filter]");
+    var tagToggle = root.querySelector("[data-works-tag-toggle]");
+    var tagPanel = root.querySelector("[data-works-tag-panel]");
+    var tagGroupsContainer = root.querySelector("[data-works-tag-groups]");
+    var tagClearButton = root.querySelector("[data-works-tag-clear]");
     var grid = root.querySelector("[data-works-grid]");
     var source = root.getAttribute("data-source") || "./data/works.json";
 
@@ -411,8 +415,69 @@
       })
       .then(function (data) {
         var categoryOrder = Array.isArray(data.categories) ? data.categories : ["すべて"];
+        var tagGroups = Array.isArray(data.tagGroups) ? data.tagGroups : [];
         var works = Array.isArray(data.works) ? data.works : [];
         var activeCategory = "すべて";
+        var activeTags = [];
+
+        function setTagPanelOpen(open) {
+          if (!tagToggle || !tagPanel) {
+            return;
+          }
+
+          tagToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          tagToggle.classList.toggle("is-open", open);
+          tagPanel.hidden = !open;
+          tagPanel.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+
+        function getDefaultTagGroups() {
+          var seen = {};
+          var tags = [];
+
+          works.forEach(function (item) {
+            (item.tags || []).concat(item.filterTags || []).forEach(function (tag) {
+              if (tag && !seen[tag]) {
+                seen[tag] = true;
+                tags.push(tag);
+              }
+            });
+          });
+
+          return tags.length ? [{ label: "タグ", tags: tags }] : [];
+        }
+
+        function getSearchableTags(item) {
+          var values = [];
+
+          if (item.category) {
+            values.push(item.category);
+          }
+
+          if (item.availability) {
+            values = values.concat(String(item.availability).split(/[\/／、・]/));
+          }
+
+          return values.concat(item.tags || [], item.filterTags || []).map(function (tag) {
+            return String(tag).trim();
+          }).filter(Boolean);
+        }
+
+        function hasAllActiveTags(item) {
+          var searchableTags = getSearchableTags(item);
+
+          return activeTags.every(function (tag) {
+            return searchableTags.indexOf(tag) !== -1;
+          });
+        }
+
+        function getVisibleWorks() {
+          return works.filter(function (item) {
+            var matchesCategory = activeCategory === "すべて" || item.category === activeCategory;
+
+            return matchesCategory && hasAllActiveTags(item);
+          });
+        }
 
         function renderFilter() {
           filterContainer.innerHTML = "";
@@ -439,12 +504,77 @@
           });
         }
 
-        function renderCards() {
-          var visibleWorks = works.filter(function (item) {
-            return activeCategory === "すべて" || item.category === activeCategory;
+        function renderTagFilters() {
+          var groups = tagGroups.length ? tagGroups : getDefaultTagGroups();
+
+          if (!tagToggle || !tagPanel || !tagGroupsContainer) {
+            return;
+          }
+
+          tagGroupsContainer.innerHTML = "";
+          tagToggle.classList.toggle("has-active-tags", activeTags.length > 0);
+          tagToggle.setAttribute(
+            "aria-label",
+            activeTags.length ? "タグ絞り込みを開く。選択中のタグ " + activeTags.length + "件" : "タグ絞り込みを開く"
+          );
+
+          if (tagClearButton) {
+            tagClearButton.disabled = activeTags.length === 0;
+          }
+
+          groups.forEach(function (group) {
+            var groupElement = document.createElement("section");
+            var heading = document.createElement("h3");
+            var list = document.createElement("div");
+
+            groupElement.className = "works-tag-group";
+            heading.textContent = group.label;
+            list.className = "works-tag-choices";
+
+            (group.tags || []).forEach(function (tag) {
+              var button = document.createElement("button");
+              var isActive = activeTags.indexOf(tag) !== -1;
+
+              button.type = "button";
+              button.className = "works-tag-choice";
+              button.textContent = tag;
+              button.setAttribute("aria-pressed", isActive ? "true" : "false");
+
+              if (isActive) {
+                button.classList.add("is-active");
+              }
+
+              button.addEventListener("click", function () {
+                if (isActive) {
+                  activeTags = activeTags.filter(function (activeTag) {
+                    return activeTag !== tag;
+                  });
+                } else {
+                  activeTags.push(tag);
+                }
+
+                renderTagFilters();
+                renderCards();
+              });
+
+              list.appendChild(button);
+            });
+
+            groupElement.appendChild(heading);
+            groupElement.appendChild(list);
+            tagGroupsContainer.appendChild(groupElement);
           });
+        }
+
+        function renderCards() {
+          var visibleWorks = getVisibleWorks();
 
           grid.innerHTML = "";
+
+          if (!visibleWorks.length) {
+            grid.innerHTML = '<p class="works-empty">条件に合う作品がありません。カテゴリーやタグを少しゆるめてみてください。</p>';
+            return;
+          }
 
           visibleWorks.forEach(function (item) {
             var card = document.createElement("article");
@@ -546,7 +676,28 @@
           });
         }
 
+        if (tagToggle && tagPanel) {
+          tagToggle.addEventListener("click", function () {
+            setTagPanelOpen(tagToggle.getAttribute("aria-expanded") !== "true");
+          });
+        }
+
+        if (tagClearButton) {
+          tagClearButton.addEventListener("click", function () {
+            activeTags = [];
+            renderTagFilters();
+            renderCards();
+          });
+        }
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            setTagPanelOpen(false);
+          }
+        });
+
         renderFilter();
+        renderTagFilters();
         renderCards();
       })
       .catch(function () {

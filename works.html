@@ -71,7 +71,32 @@
 
     <section class="works-section" aria-labelledby="works-filter-title" data-works-root data-source="./data/works.json">
       <h2 class="sr-only" id="works-filter-title">作品一覧フィルター</h2>
-      <div class="works-filter" data-works-filter role="tablist" aria-label="作品カテゴリー"></div>
+      <div class="works-toolbar">
+        <div class="works-filter" data-works-filter role="tablist" aria-label="作品カテゴリー"></div>
+        <button
+          class="works-tag-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="works-tag-panel"
+          data-works-tag-toggle
+        >
+          <span class="works-tag-toggle__icon" aria-hidden="true"></span>
+          <span>タグ検索</span>
+        </button>
+      </div>
+      <div
+        class="works-tag-panel"
+        id="works-tag-panel"
+        aria-hidden="true"
+        hidden
+        data-works-tag-panel
+      >
+        <div class="works-tag-panel__head">
+          <p>カテゴリーとは別に、プラットフォーム・配布形式・雰囲気で絞り込めます。</p>
+          <button class="works-tag-panel__clear" type="button" data-works-tag-clear>タグを解除</button>
+        </div>
+        <div class="works-tag-groups" data-works-tag-groups></div>
+      </div>
       <!-- Works are managed in data/works.json so published works can be added from data. -->
       <div class="works-grid" data-works-grid></div>
     </section>
