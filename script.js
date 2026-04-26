@@ -724,15 +724,17 @@
                 }
               });
             } else {
-              read.classList.add("diary-card__read--soon");
-              read.textContent = "詳細準備中";
+              read = null;
             }
 
             body.appendChild(meta);
             body.appendChild(title);
             body.appendChild(summary);
             body.appendChild(tags);
-            body.appendChild(read);
+
+            if (read) {
+              body.appendChild(read);
+            }
 
             card.appendChild(media);
             card.appendChild(body);

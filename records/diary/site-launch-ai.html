@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="初めての制作日記として、サイト開設とChatGPT・Cursor・Codexを使った制作の進め方についてまとめました。"
+  />
+  <title>はじめまして。AIと一緒に育てる、なおちゃんの世界 | 制作日記 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="diary-article-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major" role="menuitem" href="../../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../../profile.html" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../diary.html" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="diary-article-main" id="top">
+    <nav class="breadcrumbs" aria-label="パンくず">
+      <ol>
+        <li><a href="../../index.html#top" data-direct-link>トップ</a></li>
+        <li><a href="../diary.html" data-direct-link>制作日記</a></li>
+        <li aria-current="page">はじめまして。AIと一緒に育てる、なおちゃんの世界</li>
+      </ol>
+    </nav>
+
+    <article class="diary-article-shell" aria-labelledby="article-title">
+      <header class="diary-article-header">
+        <p class="diary-article-header__eyebrow">Making Diary</p>
+        <h1 id="article-title">はじめまして。AIと一緒に育てる、なおちゃんの世界</h1>
+        <div class="diary-article-meta">
+          <time datetime="2026-04-26">2026.04.26</time>
+          <ul aria-label="この記事のタグ">
+            <li>サイト制作</li>
+            <li>AI活用</li>
+            <li>制作記録</li>
+          </ul>
+        </div>
+        <img
+          class="diary-article-hero-image"
+          src="../../Assets/AIGenerate/diary-hero-ai-site-launch.jpg"
+          alt=""
+          width="720"
+          height="480"
+        />
+      </header>
+
+      <div class="diary-article-layout">
+        <div class="diary-article-body">
+          <p>
+            初めまして、なおちゃんです。
+            これがこのサイトで最初の制作日記になります。
+            まだ整っていないところも多いですが、少しずつ自分の創作世界を形にしていく場所として、このサイトを作り始めました。
+          </p>
+
+          <p>
+            2022年くらいから3Dモデリングを少しずつ始めました。
+            仕事として目指したい気持ちもありましたが、実力や勇気など、いろいろ足りないと感じることも多くて。
+            今は普通の社会人としてSEをしながら、自分のペースで創作を続けています。
+          </p>
+
+          <p>
+            このサイトは、ChatGPTでページの完成イメージ画像を作り、それをもとにCursorやCodexのようなAIエージェントに実装を手伝ってもらいながら作っています。
+            AIに全部任せるというより、画像で方向性を見える形にしてから、一緒にHTML・CSS・JSへ落とし込んでいく感覚です。
+          </p>
+
+          <section class="diary-article-block" aria-labelledby="reference-title">
+            <h2 id="reference-title">今回の完成イメージ</h2>
+            <p>
+              下の2枚は、ChatGPTで作った制作日記ページの完成イメージです。
+              画像があるとないとでは、AIエージェントに伝わる情報量がかなり変わります。
+              言葉だけで「青空っぽく、透明感があって、読みやすい感じ」と伝えるよりも、完成イメージがあるほうが、余白やカードの密度、スマホでの見え方まで共有しやすくなります。
+            </p>
+            <div class="diary-article-figure-grid">
+              <figure>
+                <img
+                  src="../../Assets/AIGenerate/diary-reference-article-page.png"
+                  alt="制作日記の記事ページ完成イメージ"
+                  width="1055"
+                  height="1491"
+                  loading="lazy"
+                />
+                <figcaption>ChatGPTで作った記事ページの完成イメージ</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="../../Assets/AIGenerate/diary-reference-list-page.png"
+                  alt="制作日記一覧ページ完成イメージ"
+                  width="1197"
+                  height="1314"
+                  loading="lazy"
+                />
+                <figcaption>ChatGPTで作った制作日記一覧ページの完成イメージ</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="flow-title">
+            <h2 id="flow-title">作業の流れ</h2>
+            <ul>
+              <li>ChatGPTでページの完成イメージ画像を作る</li>
+              <li>画像を見ながら、必要な要素や雰囲気を言葉にする</li>
+              <li>CursorやCodexにHTML / CSS / JSとして実装してもらう</li>
+              <li>実際の画面を見て、違和感があるところを直していく</li>
+            </ul>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="good-title">
+            <h2 id="good-title">画像があると助かったところ</h2>
+            <p>
+              完成イメージ画像があると、実装の品質が大きく変わると感じています。
+              文章だけだと、どうしても人によって受け取り方が変わります。
+              でも画像があると、「この空気感」「この余白」「このカードの大きさ」といった目標を共有しやすく、修正もしやすくなります。
+            </p>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="care-title">
+            <h2 id="care-title">気をつけていること</h2>
+            <p>
+              画像どおりに作ることだけを目的にしないことです。
+              実際のサイトでは読みやすさやリンクの分かりやすさも大事なので、完成イメージを参考にしつつ、必要なところは自分の目で見て調整しています。
+              まだ自信があるとは言えませんが、AIに助けてもらいながらなら、止まらずに少しずつ進める気がしています。
+            </p>
+          </section>
+
+          <aside class="diary-article-note">
+            <h2>ひとことメモ</h2>
+            <p>
+              ChatGPTでイメージを作り、CursorやCodexと実装し、自分で違和感を見つけて直す。
+              この流れで、このサイトを少しずつ育てていきたいです。
+            </p>
+          </aside>
+        </div>
+
+        <aside class="diary-article-side" aria-label="記事情報">
+          <section>
+            <h2>この記事のタグ</h2>
+            <ul class="diary-article-side__tags">
+              <li>サイト制作</li>
+              <li>AI活用</li>
+              <li>制作記録</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>関連する場所</h2>
+            <ul class="diary-article-side__links">
+              <li><a href="../../index.html#top">トップページ</a></li>
+              <li><a href="../../profile.html">プロフィール</a></li>
+              <li><a href="../diary.html">制作日記一覧</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <nav class="diary-article-nav" aria-label="制作日記の移動">
+        <a href="../diary.html">制作日記一覧へ</a>
+        <a href="./site-launch-ai.html" aria-current="page">この記事の先頭へ</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
