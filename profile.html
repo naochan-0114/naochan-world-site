@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="なおちゃんのプロフィールページ。どんな人がなおちゃんの世界を作っているのか、活動内容や好きな雰囲気を紹介します。"
+  />
+  <title>プロフィール | なおちゃんの世界</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="profile-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="./index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="./Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major" role="menuitem" href="./works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major is-current" role="menuitem" href="./profile.html" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="./index.html#records" data-menu-link>ギミック資料</a>
+          <a href="./index.html#records" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-main" id="top">
+    <section class="profile-world" aria-labelledby="profile-title">
+      <img class="profile-world__bg" src="./Assets/AIGenerate/hero-sky-entrance.svg" alt="" aria-hidden="true" />
+      <div class="profile-world__veil" aria-hidden="true"></div>
+
+      <section class="profile-hero">
+        <div class="profile-portrait">
+          <div class="profile-portrait__ring" aria-hidden="true"></div>
+          <div class="profile-portrait__inner">
+            <img
+              class="profile-portrait__image"
+              src="./Assets/profile/naochan-profile-icon.jpg"
+              alt="なおちゃんのプロフィール画像"
+              width="960"
+              height="960"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <div class="profile-hero__content">
+          <p class="profile-hero__eyebrow">Profile</p>
+          <h1 id="profile-title">なおちゃん</h1>
+          <p class="profile-hero__copy">心の中の世界を、かたちに。</p>
+          <p class="profile-hero__lead">
+            ゲームやアニメが好きで、好きな世界を自分でも作りたいと思い、創作をしています。
+            3D制作を中心に、いろんな創作を少しずつ形にしています。
+          </p>
+          <p class="profile-hero__lead profile-hero__lead--sub">
+            まだ成長途中ですが、自分のペースで少しずつ前へ進んでいます。
+          </p>
+          <div class="profile-hero__actions">
+            <a class="button button--primary" href="./works.html">作品を見る</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-section" aria-labelledby="profile-about-title">
+        <h2 class="sr-only" id="profile-about-title">つくる人のこと</h2>
+
+        <div class="profile-grid">
+          <article class="profile-card profile-card--activity">
+            <span class="profile-card__icon" aria-hidden="true"></span>
+            <h3>活動していること</h3>
+            <ul class="profile-list">
+              <li>VRChat向けのワールド制作</li>
+              <li>3Dモデル制作</li>
+              <li>小さなギミック制作</li>
+              <li>AIを使った創作補助</li>
+            </ul>
+          </article>
+
+          <article class="profile-card profile-card--taste">
+            <span class="profile-card__icon" aria-hidden="true"></span>
+            <h3>好きなこと・空気感</h3>
+            <p>
+              ノスタルジックで落ち着いた雰囲気や、生活感のある空間が好きです。
+              どこか懐かしくて、時間がゆっくり流れるような表現を大切にしています。
+            </p>
+          </article>
+
+          <article class="profile-card profile-card--style">
+            <span class="profile-card__icon" aria-hidden="true"></span>
+            <h3>制作スタイル</h3>
+            <p>
+              3Dモデリングを中心に、その他の部分はAIの力も借りながら作品を作っています。
+              一人で全部を完璧にやるのではなく、少しずつ形にしていくスタイルです。
+            </p>
+          </article>
+
+          <article class="profile-card profile-card--tools">
+            <span class="profile-card__icon" aria-hidden="true"></span>
+            <h3>使用ツール</h3>
+            <ul class="profile-tools">
+              <li>Blender</li>
+              <li>Substance 3D Painter</li>
+              <li>Unity</li>
+              <li>Clip Studio</li>
+            </ul>
+          </article>
+
+          <article class="profile-card profile-card--link">
+            <span class="profile-card__icon" aria-hidden="true"></span>
+            <h3>リンク</h3>
+            <p>公開中の3Dモデルや配布物はこちらにまとめています。</p>
+            <a class="profile-link" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
+          </article>
+        </div>
+      </section>
+
+      <p class="profile-message">まだ途中だけど、少しずつ形にしていきます。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
