@@ -554,10 +554,212 @@
       });
   }
 
+  function resolveDataUrl(path, source) {
+    if (!path || path.charAt(0) === "#" || /^[a-z][a-z0-9+.-]*:/i.test(path) || path.charAt(0) === "/") {
+      return path;
+    }
+
+    try {
+      return new URL(path, new URL(source, window.location.href)).toString();
+    } catch (error) {
+      return path;
+    }
+  }
+
+  function parseDiaryDate(dateText) {
+    var timestamp = Date.parse(String(dateText || "").replace(/\./g, "-"));
+
+    return Number.isNaN(timestamp) ? 0 : timestamp;
+  }
+
+  function toDateTimeValue(dateText) {
+    return String(dateText || "").replace(/\./g, "-");
+  }
+
+  function initDiaryPage() {
+    var root = document.querySelector("[data-diary-root]");
+
+    if (!root) {
+      return;
+    }
+
+    var filterContainer = root.querySelector("[data-diary-filter]");
+    var list = root.querySelector("[data-diary-list]");
+    var sortSelect = root.querySelector("[data-diary-sort]");
+    var source = root.getAttribute("data-source") || "./data/diary.json";
+
+    if (!filterContainer || !list) {
+      return;
+    }
+
+    fetch(source)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("制作日記データを読み込めませんでした。");
+        }
+
+        return response.json();
+      })
+      .then(function (data) {
+        var filters = Array.isArray(data.filters) ? data.filters : ["すべて"];
+        var articles = Array.isArray(data.articles) ? data.articles : [];
+        var activeFilter = "すべて";
+        var sortOrder = sortSelect ? sortSelect.value : "newest";
+
+        function renderFilters() {
+          filterContainer.innerHTML = "";
+
+          filters.forEach(function (filter) {
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "diary-filter__button";
+            button.textContent = filter;
+            button.setAttribute("role", "tab");
+            button.setAttribute("aria-selected", filter === activeFilter ? "true" : "false");
+
+            if (filter === activeFilter) {
+              button.classList.add("is-active");
+            }
+
+            button.addEventListener("click", function () {
+              activeFilter = filter;
+              renderFilters();
+              renderArticles();
+            });
+
+            filterContainer.appendChild(button);
+          });
+        }
+
+        function getVisibleArticles() {
+          return articles
+            .filter(function (article) {
+              return activeFilter === "すべて" || (Array.isArray(article.tags) && article.tags.indexOf(activeFilter) !== -1);
+            })
+            .slice()
+            .sort(function (a, b) {
+              var diff = parseDiaryDate(b.date) - parseDiaryDate(a.date);
+
+              return sortOrder === "oldest" ? -diff : diff;
+            });
+        }
+
+        function renderArticles() {
+          var visibleArticles = getVisibleArticles();
+
+          list.innerHTML = "";
+
+          if (visibleArticles.length === 0) {
+            list.innerHTML = '<p class="diary-error">このタグの記事はまだありません。</p>';
+            return;
+          }
+
+          visibleArticles.forEach(function (article) {
+            var card = document.createElement("article");
+            var media = document.createElement("div");
+            var body = document.createElement("div");
+            var meta = document.createElement("p");
+            var time = document.createElement("time");
+            var title = document.createElement("h3");
+            var summary = document.createElement("p");
+            var tags = document.createElement("ul");
+            var read = document.createElement(article.detail ? "a" : "span");
+            var detailUrl = article.detail ? resolveDataUrl(article.detail, source) : "";
+
+            card.className = "diary-card";
+            card.id = article.id || "";
+            media.className = "diary-card__media";
+            body.className = "diary-card__body";
+            meta.className = "diary-card__meta";
+            summary.className = "diary-card__summary";
+            tags.className = "diary-card__tags";
+            read.className = "diary-card__read";
+
+            if (article.thumbnail) {
+              var img = document.createElement("img");
+              img.src = resolveDataUrl(article.thumbnail, source);
+              img.alt = article.title + " のサムネイル";
+              img.loading = "lazy";
+              media.appendChild(img);
+            } else {
+              var placeholder = document.createElement("div");
+              placeholder.className = "diary-card__placeholder";
+              placeholder.textContent = "Diary";
+              media.appendChild(placeholder);
+            }
+
+            time.dateTime = toDateTimeValue(article.date);
+            time.textContent = article.date;
+            meta.appendChild(time);
+
+            title.textContent = article.title;
+            summary.textContent = article.summary;
+
+            (article.tags || []).forEach(function (tag) {
+              var tagItem = document.createElement("li");
+              tagItem.textContent = tag;
+              tags.appendChild(tagItem);
+            });
+
+            if (detailUrl) {
+              card.classList.add("diary-card--clickable");
+              card.setAttribute("tabindex", "0");
+              card.setAttribute("role", "link");
+              card.setAttribute("aria-label", article.title + " を読む");
+              read.href = detailUrl;
+              read.textContent = "読む";
+
+              card.addEventListener("click", function (event) {
+                if (event.target instanceof Element && event.target.closest("a")) {
+                  return;
+                }
+
+                window.location.href = detailUrl;
+              });
+
+              card.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  window.location.href = detailUrl;
+                }
+              });
+            } else {
+              read.classList.add("diary-card__read--soon");
+              read.textContent = "詳細準備中";
+            }
+
+            body.appendChild(meta);
+            body.appendChild(title);
+            body.appendChild(summary);
+            body.appendChild(tags);
+            body.appendChild(read);
+
+            card.appendChild(media);
+            card.appendChild(body);
+            list.appendChild(card);
+          });
+        }
+
+        if (sortSelect) {
+          sortSelect.addEventListener("change", function () {
+            sortOrder = sortSelect.value;
+            renderArticles();
+          });
+        }
+
+        renderFilters();
+        renderArticles();
+      })
+      .catch(function () {
+        list.innerHTML = '<p class="diary-error">制作日記データの読み込みに失敗しました。時間をおいて再読み込みしてください。</p>';
+      });
+  }
+
   setCurrentYear();
   initTopFlowMenu();
   initSmoothAnchorScroll();
   initDirectLinks();
   initWorkGallerySwitch();
   initWorksPage();
+  initDiaryPage();
 })();

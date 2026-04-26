@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="なおちゃんの世界の制作日記ページ。制作途中の記録や試行錯誤、考えたことを残していく場所です。"
+  />
+  <title>制作日記 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="diary-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <a class="top-flow-menu__major" role="menuitem" href="../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../profile.html" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="./diary.html" data-menu-link>制作日記</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" class="diary-main">
+    <section class="diary-hero" aria-labelledby="diary-title">
+      <div class="diary-hero__backdrop" aria-hidden="true">
+        <img src="../Assets/AIGenerate/hero-sky-entrance.svg" alt="" width="1600" height="980" />
+      </div>
+      <div class="diary-hero__content">
+        <p class="diary-hero__eyebrow">Making Diary</p>
+        <h1 id="diary-title">制作日記</h1>
+        <p class="diary-hero__lead">
+          制作の途中や試行錯誤、気づいたことなどを日記のように残していく場所です。
+          作品ができるまでの過程を、ゆるく記録していきます。
+        </p>
+      </div>
+    </section>
+
+    <section class="diary-section" aria-labelledby="diary-list-title" data-diary-root data-source="../data/diary.json">
+      <div class="diary-toolbar">
+        <div>
+          <p class="diary-toolbar__eyebrow">Records</p>
+          <h2 id="diary-list-title">日記一覧</h2>
+        </div>
+        <label class="diary-sort">
+          <span>並び順</span>
+          <select data-diary-sort>
+            <option value="newest">新しい順</option>
+            <option value="oldest">古い順</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="diary-filters" data-diary-filter role="tablist" aria-label="制作日記タグ"></div>
+      <p class="diary-note">
+        記事データは <code>data/diary.json</code> から読み込んでいます。詳細ページは順次追加できる構成です。
+      </p>
+      <div class="diary-list" data-diary-list></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

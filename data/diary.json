@@ -1,0 +1,50 @@
+{
+  "filters": [
+    "すべて",
+    "VRChat",
+    "ワールド制作",
+    "サイト制作",
+    "ギミック",
+    "Unity"
+  ],
+  "articles": [
+    {
+      "id": "grandmas-house-progress",
+      "title": "祖母の家の制作を少しずつ進める",
+      "date": "2026.04.24",
+      "tags": [
+        "VRChat",
+        "ワールド制作",
+        "祖母の家"
+      ],
+      "summary": "祖母の家をVRChatワールドとして形にしていく制作記録です。",
+      "thumbnail": "../Assets/AIGenerate/diary-thumb-grandmas-house.svg",
+      "detail": ""
+    },
+    {
+      "id": "thinking-work-pages",
+      "title": "作品ページの構成を考えた日",
+      "date": "2026.04.24",
+      "tags": [
+        "Web制作",
+        "サイト制作"
+      ],
+      "summary": "作品一覧ページや作品詳細ページの見せ方について考えた記録です。",
+      "thumbnail": "../Assets/AIGenerate/diary-thumb-site-layout.svg",
+      "detail": ""
+    },
+    {
+      "id": "gimmick-notes",
+      "title": "ギミック制作のメモ",
+      "date": "2026.04.24",
+      "tags": [
+        "Unity",
+        "ギミック",
+        "VRChat"
+      ],
+      "summary": "扉やスイッチなど、ワールド内で使うギミック制作の記録です。",
+      "thumbnail": "../Assets/AIGenerate/diary-thumb-gimmick.svg",
+      "detail": ""
+    }
+  ]
+}
