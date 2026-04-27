@@ -439,6 +439,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 :root[data-theme="dark"] .top-flow-menu__theme,
 :root[data-theme="dark"] .section-heading,
 :root[data-theme="dark"] .guide-card,
+:root[data-theme="dark"] .changelog,
 :root[data-theme="dark"] .works-hero__inner,
 :root[data-theme="dark"] .works-toolbar,
 :root[data-theme="dark"] .works-tag-panel,
@@ -654,6 +655,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
 :root[data-theme="dark"] .guide-card__action {
   background: rgba(26, 44, 82, 0.94);
   border-color: rgba(128, 162, 220, 0.42);
+}
+
+:root[data-theme="dark"] .changelog__item {
+  border-bottom-color: rgba(128, 162, 220, 0.28);
 }
 
 :root[data-theme="dark"] .works-empty {
@@ -911,6 +916,69 @@ a, button { -webkit-tap-highlight-color: transparent; }
   background: rgba(255, 255, 255, 0.94);
 }
 .guide-card__action::before { content: "\203A"; color: var(--accent-deep); font-size: 1.45rem; line-height: 1; }
+
+.changelog {
+  padding: 0 0 4.2rem;
+}
+
+.changelog__wrap {
+  width: var(--container);
+  margin: 0 auto;
+  padding: 2rem 1.75rem 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 251, 255, 0.92));
+  box-shadow: var(--shadow-card);
+}
+
+.changelog .section-heading {
+  margin-bottom: 1.75rem;
+}
+
+.changelog__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.changelog__item {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 9.2rem) 1fr;
+  gap: 1rem 1.25rem;
+  align-items: baseline;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(98, 128, 162, 0.18);
+}
+
+.changelog__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.changelog__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--accent-deep);
+  white-space: nowrap;
+}
+
+.changelog__text {
+  color: var(--ink-main);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 520px) {
+  .changelog__item {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
 
 .site-footer { padding: 0 1.5rem 2.4rem; text-align: center; color: rgba(72, 108, 144, 0.74); }
 
