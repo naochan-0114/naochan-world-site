@@ -561,6 +561,52 @@ a, button { -webkit-tap-highlight-color: transparent; }
   color: #eff5ff;
 }
 
+:root[data-theme="dark"] .profile-world {
+  background: linear-gradient(180deg, rgba(17, 30, 58, 0.9), rgba(14, 25, 48, 0.9));
+  border-color: rgba(109, 141, 198, 0.38);
+}
+
+:root[data-theme="dark"] .profile-world__bg {
+  opacity: 0.54;
+  filter: saturate(0.9) brightness(0.7);
+}
+
+:root[data-theme="dark"] .profile-world__veil {
+  background:
+    linear-gradient(180deg, rgba(8, 14, 30, 0.08) 0%, rgba(9, 17, 36, 0.42) 52%, rgba(8, 15, 31, 0.92) 86%),
+    linear-gradient(90deg, rgba(9, 16, 33, 0.38) 0%, rgba(9, 16, 33, 0.2) 44%, rgba(9, 16, 33, 0.4) 100%);
+}
+
+:root[data-theme="dark"] .profile-hero h1 {
+  text-shadow: 0 10px 24px rgba(5, 9, 20, 0.68);
+}
+
+:root[data-theme="dark"] .profile-hero__copy {
+  color: #bfd8ff;
+}
+
+:root[data-theme="dark"] .profile-hero__lead {
+  color: #d9e8ff;
+  text-shadow: none;
+}
+
+:root[data-theme="dark"] .profile-portrait__ring {
+  background:
+    conic-gradient(from 210deg, rgba(68, 124, 212, 0), rgba(68, 124, 212, 0.3), rgba(188, 220, 255, 0.32), rgba(68, 124, 212, 0)),
+    radial-gradient(circle, rgba(26, 45, 81, 0.86), rgba(22, 38, 69, 0.26) 62%, rgba(22, 38, 69, 0));
+  filter: drop-shadow(0 24px 40px rgba(3, 8, 18, 0.62));
+}
+
+:root[data-theme="dark"] .profile-portrait__inner {
+  border-color: rgba(186, 215, 255, 0.62);
+  background:
+    radial-gradient(circle at 45% 28%, rgba(228, 240, 255, 0.96), rgba(177, 207, 242, 0.8) 52%, rgba(92, 133, 187, 0.74)),
+    linear-gradient(145deg, rgba(78, 129, 197, 0.26), rgba(34, 58, 99, 0.22));
+  box-shadow:
+    inset 0 1px 0 rgba(238, 246, 255, 0.62),
+    0 22px 42px rgba(6, 12, 24, 0.52);
+}
+
 .hero { padding: clamp(6rem, 9vw, 7.6rem) 0 2.5rem; }
 .hero__shell {
   position: relative;
