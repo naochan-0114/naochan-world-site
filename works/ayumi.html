@@ -41,14 +41,17 @@
 
     <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
       <div class="top-flow-menu__bar" role="menubar">
-        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
-          <span aria-hidden="true">&times;</span>
-        </button>
-
         <a class="top-flow-menu__major is-current" role="menuitem" href="../works.html" data-menu-link>作品</a>
         <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
         <a class="top-flow-menu__major" role="menuitem" href="../profile.html" data-menu-link>プロフィール</a>
         <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+        <button class="theme-icon-toggle" type="button" aria-label="ダークモードに切り替える" aria-pressed="false" data-theme-toggle>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--moon" aria-hidden="true"></span>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--sun" aria-hidden="true"></span>
+        </button>
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
 
       <div class="top-flow-menu__subrows" data-subrows>
@@ -58,23 +61,6 @@
         </div>
       </div>
 
-      <div class="top-flow-menu__theme" role="group" aria-label="表示テーマ">
-        <span>ダークモード</span>
-        <label class="theme-switch" for="theme-toggle-menu">
-          <input
-            class="theme-switch__input"
-            id="theme-toggle-menu"
-            type="checkbox"
-            role="switch"
-            aria-label="ダークモードを切り替える"
-            data-theme-toggle
-          />
-          <span class="theme-switch__track" aria-hidden="true">
-            <span class="theme-switch__thumb"></span>
-          </span>
-          <span class="theme-switch__state" data-theme-label>OFF</span>
-        </label>
-      </div>
     </nav>
   </header>
 

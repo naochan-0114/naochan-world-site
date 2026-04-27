@@ -13,7 +13,6 @@
     var storageKey = "naochan-world-theme";
     var root = document.documentElement;
     var toggles = document.querySelectorAll("[data-theme-toggle]");
-    var labels = document.querySelectorAll("[data-theme-label]");
     var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     var currentTheme = "";
 
@@ -45,12 +44,16 @@
 
       Array.prototype.forEach.call(toggles, function (toggle) {
         var isDark = nextTheme === "dark";
-        toggle.checked = isDark;
-        toggle.setAttribute("aria-checked", isDark ? "true" : "false");
-      });
 
-      Array.prototype.forEach.call(labels, function (label) {
-        label.textContent = nextTheme === "dark" ? "ON" : "OFF";
+        if (toggle instanceof HTMLInputElement && toggle.type === "checkbox") {
+          toggle.checked = isDark;
+          toggle.setAttribute("aria-checked", isDark ? "true" : "false");
+        } else {
+          toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+        }
+
+        toggle.setAttribute("aria-label", isDark ? "ライトモードに切り替える" : "ダークモードに切り替える");
+        toggle.setAttribute("title", isDark ? "ライトモードに切り替える" : "ダークモードに切り替える");
       });
 
       if (persist) {
@@ -63,9 +66,15 @@
     }
 
     Array.prototype.forEach.call(toggles, function (toggle) {
-      toggle.addEventListener("change", function () {
-        setTheme(toggle.checked ? "dark" : "light", true);
-      });
+      if (toggle instanceof HTMLInputElement && toggle.type === "checkbox") {
+        toggle.addEventListener("change", function () {
+          setTheme(toggle.checked ? "dark" : "light", true);
+        });
+      } else {
+        toggle.addEventListener("click", function () {
+          setTheme(currentTheme === "dark" ? "light" : "dark", true);
+        });
+      }
     });
 
     if (typeof mediaQuery.addEventListener === "function") {
