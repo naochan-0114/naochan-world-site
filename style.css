@@ -59,6 +59,9 @@ body {
   --surface-panel: rgba(15, 28, 54, 0.82);
   --surface-card: rgba(20, 35, 66, 0.78);
   --surface-border: rgba(122, 157, 211, 0.36);
+  --works-panel-bg: linear-gradient(180deg, rgba(23, 38, 70, 0.92), rgba(18, 31, 58, 0.9));
+  --works-card-bg: linear-gradient(180deg, rgba(26, 44, 80, 0.92), rgba(22, 38, 70, 0.9));
+  --works-outline: rgba(109, 141, 198, 0.42);
   color-scheme: dark;
 }
 
