@@ -439,7 +439,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
 :root[data-theme="dark"] .top-flow-menu__theme,
 :root[data-theme="dark"] .section-heading,
 :root[data-theme="dark"] .guide-card,
-:root[data-theme="dark"] .changelog,
 :root[data-theme="dark"] .works-hero__inner,
 :root[data-theme="dark"] .works-toolbar,
 :root[data-theme="dark"] .works-tag-panel,
@@ -657,8 +656,36 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-color: rgba(128, 162, 220, 0.42);
 }
 
+:root[data-theme="dark"] .changelog__wrap {
+  background: linear-gradient(180deg, rgba(22, 38, 72, 0.96), rgba(16, 28, 54, 0.94));
+  border-color: rgba(118, 152, 210, 0.45);
+  box-shadow: var(--shadow-card);
+  color: #e8f2ff;
+}
+
+:root[data-theme="dark"] .changelog .section-heading {
+  background: transparent;
+  border-color: transparent;
+}
+
+:root[data-theme="dark"] .changelog .section-heading__title {
+  color: var(--ink-strong);
+}
+
+:root[data-theme="dark"] .changelog .section-heading__eyebrow {
+  color: var(--accent);
+}
+
+:root[data-theme="dark"] .changelog__date {
+  color: #c8dcff;
+}
+
+:root[data-theme="dark"] .changelog__text {
+  color: #e8f2ff;
+}
+
 :root[data-theme="dark"] .changelog__item {
-  border-bottom-color: rgba(128, 162, 220, 0.28);
+  border-bottom-color: rgba(128, 162, 220, 0.38);
 }
 
 :root[data-theme="dark"] .works-empty {
