@@ -9,6 +9,86 @@
     }
   }
 
+  function initThemeToggle() {
+    var storageKey = "naochan-world-theme";
+    var root = document.documentElement;
+    var toggles = document.querySelectorAll("[data-theme-toggle]");
+    var labels = document.querySelectorAll("[data-theme-label]");
+    var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    var currentTheme = "";
+
+    if (!toggles.length) {
+      return;
+    }
+
+    function getPreferredTheme() {
+      var savedTheme = "";
+
+      try {
+        savedTheme = window.localStorage.getItem(storageKey) || "";
+      } catch (error) {
+        savedTheme = "";
+      }
+
+      if (savedTheme === "dark" || savedTheme === "light") {
+        return savedTheme;
+      }
+
+      return mediaQuery.matches ? "dark" : "light";
+    }
+
+    function setTheme(theme, persist) {
+      var nextTheme = theme === "dark" ? "dark" : "light";
+
+      currentTheme = nextTheme;
+      root.setAttribute("data-theme", nextTheme);
+
+      Array.prototype.forEach.call(toggles, function (toggle) {
+        var isDark = nextTheme === "dark";
+        toggle.checked = isDark;
+        toggle.setAttribute("aria-checked", isDark ? "true" : "false");
+      });
+
+      Array.prototype.forEach.call(labels, function (label) {
+        label.textContent = nextTheme === "dark" ? "ON" : "OFF";
+      });
+
+      if (persist) {
+        try {
+          window.localStorage.setItem(storageKey, nextTheme);
+        } catch (error) {
+          /* noop */
+        }
+      }
+    }
+
+    Array.prototype.forEach.call(toggles, function (toggle) {
+      toggle.addEventListener("change", function () {
+        setTheme(toggle.checked ? "dark" : "light", true);
+      });
+    });
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", function (event) {
+        var savedTheme = "";
+
+        try {
+          savedTheme = window.localStorage.getItem(storageKey) || "";
+        } catch (error) {
+          savedTheme = "";
+        }
+
+        if (savedTheme === "dark" || savedTheme === "light") {
+          return;
+        }
+
+        setTheme(event.matches ? "dark" : "light", false);
+      });
+    }
+
+    setTheme(getPreferredTheme(), false);
+  }
+
   function initTopFlowMenu() {
     var body = document.body;
     var panel = document.querySelector("[data-menu-panel]");
@@ -909,6 +989,7 @@
   }
 
   setCurrentYear();
+  initThemeToggle();
   initTopFlowMenu();
   initSmoothAnchorScroll();
   initDirectLinks();
