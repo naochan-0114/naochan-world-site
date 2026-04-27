@@ -487,6 +487,77 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-color: rgba(136, 170, 224, 0.45);
 }
 
+:root[data-theme="dark"] .site-logo__text span {
+  color: rgba(198, 218, 250, 0.78);
+}
+
+:root[data-theme="dark"] .works-filter,
+:root[data-theme="dark"] .diary-filters {
+  background: rgba(20, 33, 64, 0.86);
+  border: 1px solid rgba(118, 148, 204, 0.34);
+}
+
+:root[data-theme="dark"] .works-filter__button,
+:root[data-theme="dark"] .diary-filter__button,
+:root[data-theme="dark"] .works-tag-choice,
+:root[data-theme="dark"] .works-tag-panel__clear,
+:root[data-theme="dark"] .diary-sort select,
+:root[data-theme="dark"] .work-link--detail,
+:root[data-theme="dark"] .profile-link {
+  color: #e9f1ff;
+  background: rgba(22, 37, 70, 0.94);
+  border-color: rgba(128, 162, 220, 0.46);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .works-filter__button.is-active,
+:root[data-theme="dark"] .diary-filter__button.is-active,
+:root[data-theme="dark"] .works-tag-choice.is-active,
+:root[data-theme="dark"] .works-tag-toggle.has-active-tags {
+  background: linear-gradient(135deg, #5e8de3, #3e6fc8);
+  color: #fff;
+  border-color: rgba(131, 170, 234, 0.86);
+}
+
+:root[data-theme="dark"] .works-tag-toggle,
+:root[data-theme="dark"] .works-tag-toggle:hover,
+:root[data-theme="dark"] .works-tag-toggle:focus-visible,
+:root[data-theme="dark"] .works-tag-toggle.is-open {
+  color: #e9f1ff;
+  background: rgba(21, 36, 67, 0.94);
+  border-color: rgba(128, 162, 220, 0.46);
+  box-shadow: 0 14px 26px rgba(4, 8, 20, 0.45);
+}
+
+:root[data-theme="dark"] .works-tag-group {
+  background: rgba(15, 27, 53, 0.88);
+  border-color: rgba(104, 137, 193, 0.35);
+}
+
+:root[data-theme="dark"] .works-tag-group h3 {
+  color: #bcd7ff;
+}
+
+:root[data-theme="dark"] .works-tag-panel__head p,
+:root[data-theme="dark"] .diary-sort,
+:root[data-theme="dark"] .work-tags li,
+:root[data-theme="dark"] .work-badge--availability {
+  color: #dceafe;
+}
+
+:root[data-theme="dark"] .work-tags li,
+:root[data-theme="dark"] .work-badge--availability {
+  background: rgba(36, 55, 92, 0.9);
+}
+
+:root[data-theme="dark"] .work-link {
+  border-color: rgba(128, 162, 220, 0.42);
+}
+
+:root[data-theme="dark"] .work-fold summary {
+  color: #eff5ff;
+}
+
 .hero { padding: clamp(6rem, 9vw, 7.6rem) 0 2.5rem; }
 .hero__shell {
   position: relative;
