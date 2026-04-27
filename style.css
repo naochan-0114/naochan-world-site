@@ -490,6 +490,31 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-color: rgba(136, 170, 224, 0.45);
 }
 
+:root[data-theme="dark"] .hero__shell {
+  background: linear-gradient(180deg, rgba(19, 33, 62, 0.86), rgba(14, 25, 48, 0.88));
+}
+
+:root[data-theme="dark"] .hero__shell::before {
+  border-color: rgba(118, 149, 201, 0.38);
+}
+
+:root[data-theme="dark"] .hero__art {
+  filter: brightness(0.72) saturate(0.9);
+}
+
+:root[data-theme="dark"] .hero__eyebrow {
+  color: #9fc4ff;
+}
+
+:root[data-theme="dark"] .hero__tagline {
+  color: #c8dcff;
+}
+
+:root[data-theme="dark"] .hero__lead {
+  color: #d8e6ff;
+  text-shadow: none;
+}
+
 :root[data-theme="dark"] .site-logo__text span {
   color: rgba(198, 218, 250, 0.78);
 }
