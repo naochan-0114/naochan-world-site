@@ -3098,3 +3098,139 @@ button.work-link {
     gap: 0.2rem;
   }
 }
+
+/* Project and privacy pages */
+.project-page-main,
+.privacy-page-main {
+  width: var(--container);
+  margin: 0 auto;
+  padding: clamp(6.2rem, 10vw, 8.2rem) 0 4rem;
+}
+
+.project-shell,
+.privacy-shell {
+  border: 1px solid var(--works-outline);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  background: var(--works-panel-bg);
+  box-shadow: var(--shadow-panel);
+}
+
+.project-hero,
+.privacy-hero {
+  border: 1px solid var(--works-outline);
+  border-radius: 26px;
+  padding: clamp(1.3rem, 2.8vw, 2rem);
+  background: var(--works-card-bg);
+  box-shadow: var(--shadow-card);
+}
+
+.project-hero__eyebrow,
+.privacy-hero__eyebrow {
+  margin: 0;
+  color: var(--accent-deep);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.project-hero h1,
+.privacy-hero h1 {
+  margin: 0.72rem 0 0;
+  color: var(--ink-strong);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  letter-spacing: 0.05em;
+}
+
+.project-hero__lead,
+.privacy-hero__lead {
+  margin: 0.72rem 0 0;
+  color: var(--ink-main);
+  font-weight: 700;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.92rem;
+}
+
+.project-section,
+.privacy-section {
+  margin-top: 1rem;
+  border: 1px solid var(--works-outline);
+  border-radius: 22px;
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  background: var(--works-card-bg);
+  box-shadow: var(--shadow-card);
+}
+
+.project-section h2,
+.privacy-section h2 {
+  margin: 0;
+  color: var(--ink-strong);
+  font-size: clamp(1.2rem, 2.3vw, 1.6rem);
+}
+
+.project-section p,
+.privacy-section p {
+  margin: 0.65rem 0 0;
+  color: var(--ink-main);
+  font-weight: 700;
+}
+
+.policy-list {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.policy-list li {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: rgba(255, 255, 255, 0.64);
+  color: var(--ink-main);
+  font-weight: 700;
+}
+
+.project-links,
+.privacy-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.project-links .button,
+.privacy-links .button {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .project-page-main,
+  .privacy-page-main {
+    padding-top: calc(max(5.2rem, env(safe-area-inset-top)) + 0.8rem);
+  }
+
+  .project-shell,
+  .privacy-shell {
+    border-radius: 28px;
+    padding: 0.82rem;
+  }
+
+  .project-hero,
+  .privacy-hero,
+  .project-section,
+  .privacy-section {
+    border-radius: 20px;
+  }
+
+  .project-links .button,
+  .privacy-links .button {
+    width: 100%;
+  }
+}

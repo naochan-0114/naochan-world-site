@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="MyDreamFPSGame は、なおちゃんが制作中のオンラインFPSプロトタイプです。開発状況とオンライン機能検証に関する案内を掲載しています。"
+  />
+  <title>MyDreamFPSGame | なおちゃんの世界</title>
+  <link rel="canonical" href="https://naochan-world.jp/projects/mydreamfpsgame" />
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="project-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <a class="top-flow-menu__major" role="menuitem" href="../../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../../profile.html" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+        <button class="theme-icon-toggle" type="button" aria-label="ダークモードに切り替える" aria-pressed="false" data-theme-toggle>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--moon" aria-hidden="true"></span>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--sun" aria-hidden="true"></span>
+        </button>
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../../records/diary.html" data-menu-link>制作日記</a>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <main id="top" class="project-page-main">
+    <article class="project-shell" aria-labelledby="project-title">
+      <section class="project-hero">
+        <p class="project-hero__eyebrow">Project</p>
+        <h1 id="project-title">MyDreamFPSGame</h1>
+        <p class="project-hero__lead">
+          MyDreamFPSGame は、なおちゃんが制作中のオンラインFPSプロトタイプです。
+          現在は、射撃、リロード、ターゲットダミー、PvP検証、スコアボード、ラウンド管理などの基礎機能を開発しています。
+        </p>
+        <div class="project-meta">
+          <span class="work-badge work-badge--category">Development</span>
+          <span class="work-badge work-badge--availability">Prototype</span>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="online-title">
+        <h2 id="online-title">オンライン機能について</h2>
+        <p>
+          本プロジェクトでは、オンライン接続検証のために Epic Online Services / Epic Account Services を利用する可能性があります。
+        </p>
+      </section>
+
+      <section class="project-section" aria-labelledby="data-title">
+        <h2 id="data-title">収集する可能性のある情報</h2>
+        <p>
+          Epicアカウント連携時に、認証・オンライン接続に必要な最低限の情報がEpic Online Services経由で処理される場合があります。
+        </p>
+      </section>
+
+      <section class="project-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">お問い合わせ</h2>
+        <p>お問い合わせは今後整備予定です。</p>
+      </section>
+
+      <div class="project-links">
+        <a class="button button--primary" href="../../privacy/">Privacy Policy</a>
+        <a class="button button--secondary" href="../../works.html">作品一覧へ戻る</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
