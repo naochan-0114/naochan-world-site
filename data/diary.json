@@ -2,10 +2,24 @@
   "filters": [
     "すべて",
     "サイト制作",
+    "ゲーム制作",
     "AI活用",
     "制作記録"
   ],
   "articles": [
+    {
+      "id": "dream-fps-part1",
+      "title": "念願のゲーム制作 part1",
+      "date": "2026.05.10",
+      "tags": [
+        "ゲーム制作",
+        "AI活用",
+        "制作記録"
+      ],
+      "summary": "高校生の頃からのFPS制作の夢を、UE5.7とAI開発環境で再開。3日でマルチ検証まで進めた記録と、Steam AppID 480での身内向けオンラインテストについて。",
+      "thumbnail": "../Assets/diary/diary-fps-part1-multiplayer-validation.png",
+      "detail": "../records/diary/dream-fps-part1.html"
+    },
     {
       "id": "site-launch-ai-support",
       "title": "はじめまして。AIと一緒に育てる、なおちゃんの世界",

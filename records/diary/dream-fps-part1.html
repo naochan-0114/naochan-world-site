@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="高校生の頃から続くFPS制作の夢を、Unreal Engine 5.7とAI開発環境で再挑戦。3日でマルチ検証まで進めた記録です。"
+  />
+  <title>念願のゲーム制作 part1 | 制作日記 | なおちゃんの世界</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="diary-article-page">
+  <div class="bg-sky" aria-hidden="true"></div>
+  <div class="bg-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="../../index.html#top" aria-label="なおちゃんの世界 トップへ戻る">
+        <img class="site-logo__mark" src="../../Assets/AIGenerate/logo-leaf-mark.svg" alt="" width="28" height="28" />
+        <span class="site-logo__text">
+          <strong>なおちゃんの世界</strong>
+          <span>naochan's world</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span class="sr-only">メニュー</span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+    </div>
+
+    <nav class="top-flow-menu" id="site-menu" aria-label="サイトカテゴリー" aria-hidden="true" data-menu-panel>
+      <div class="top-flow-menu__bar" role="menubar">
+        <a class="top-flow-menu__major" role="menuitem" href="../../works.html" data-menu-link>作品</a>
+        <button class="top-flow-menu__major" type="button" role="menuitem" data-major="records">解説・記録</button>
+        <a class="top-flow-menu__major" role="menuitem" href="../../profile.html" data-menu-link>プロフィール</a>
+        <a class="top-flow-menu__major" role="menuitem" href="https://naochan-shop.booth.pm/" target="_blank" rel="noopener noreferrer" data-menu-link>BOOTH</a>
+        <button class="theme-icon-toggle" type="button" aria-label="ダークモードに切り替える" aria-pressed="false" data-theme-toggle>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--moon" aria-hidden="true"></span>
+          <span class="theme-icon-toggle__icon theme-icon-toggle__icon--sun" aria-hidden="true"></span>
+        </button>
+        <button class="top-flow-menu__close" type="button" aria-label="メニューを閉じる" data-menu-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="top-flow-menu__subrows" data-subrows>
+        <div class="top-flow-menu__subrow" data-subrow="records">
+          <a href="../../index.html#records" data-menu-link>ギミック資料</a>
+          <a href="../diary.html" data-menu-link>制作日記</a>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <main class="diary-article-main" id="top">
+    <nav class="breadcrumbs" aria-label="パンくず">
+      <ol>
+        <li><a href="../../index.html#top" data-direct-link>トップ</a></li>
+        <li><a href="../diary.html" data-direct-link>制作日記</a></li>
+        <li aria-current="page">念願のゲーム制作 part1</li>
+      </ol>
+    </nav>
+
+    <article class="diary-article-shell" aria-labelledby="article-title">
+      <header class="diary-article-header">
+        <p class="diary-article-header__eyebrow">Making Diary</p>
+        <h1 id="article-title">念願のゲーム制作 part1</h1>
+        <div class="diary-article-meta">
+          <time datetime="2026-05-10">2026.05.10</time>
+          <ul aria-label="この記事のタグ">
+            <li>ゲーム制作</li>
+            <li>AI活用</li>
+            <li>制作記録</li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="diary-article-layout">
+        <div class="diary-article-body">
+          <p>
+            高校生の頃から、ゲーム制作にはずっと手を出してきました。
+            当時は本当にやりたかったのはFPSだったのですが、いま振り返ると技術的にも時間的にも、あの頃の自分には届かない夢でした。
+          </p>
+
+          <p>
+            大学では3DCGやゲーム制作について体系的に学び、卒業してからも創作は続けてきました。
+            そしてここ数年で、CursorやCodexのようなAIのコーディング支援が実用ラインまで伸びてきたのを見て、大人になって少しだけ自分のお金を創作に回せるようになった今なら、当時頭の中にだけあった「あのFPS」に、もう一度本気で挑戦できるのではないかと思い直しました。
+          </p>
+
+          <section class="diary-article-block" aria-labelledby="vision-title">
+            <h2 id="vision-title">目指しているもの</h2>
+            <p>
+              私が作りたいFPSは、好きなものをぜんぶ詰め込んだ、いわゆる闇鍋のようなゲームです。
+              アニメ調のかわいいキャラも、かっこいいキャラも、銃や剣、魔法、それに兵器のようなギミックまで持ち込んで、戦場を飛び回ったり爆発したりしながら勝ちを奪い合う、はちゃめちゃな対戦がしたいのです。
+            </p>
+            <p>
+              ルールや世界観の細部は、また別の記事でゆっくり書いていこうと思います。
+              いまは「どんな遊びをしたいか」の輪郭を、自分の言葉で置いておくくらいの段階です。
+            </p>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="stack-title">
+            <h2 id="stack-title">いまの制作体制</h2>
+            <p>
+              エンジンは <strong>Unreal Engine 5.7</strong> です。
+              実装まわりは、CodexやCursorといったAI開発ツールと、Unreal向けのMCPである <strong>ChiR24/Unreal_mcp</strong> を組み合わせた環境で進めています。
+              エディタ操作やプロジェクトの文脈をツール側に渡せるので、単発のスクリプト生成よりも「プロジェクトに沿った提案」をもらいやすく、試行錯誤の速度がかなり違うと感じています。
+            </p>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="progress-title">
+            <h2 id="progress-title">最初の3日でできたこと</h2>
+            <p>
+              ひとまずの目標は、「最低限遊べる土台」を固めることにしました。
+              移動や射撃といった基本操作に加えて、マルチプレイ用の環境を整え、実際にフレンドと入り込んで動作確認ができるところまで、三日ほどで持っていくことができました。
+            </p>
+            <p>
+              オンライン検証には、Steam のテスト用アプリIDである <strong>AppID 480</strong> を使った、身内向けの遠隔テスト環境を用意しています。
+              当初は Epic Online Services（EOS）側で本番に近い構成を組もうとしていたのですが、Epic の承認待ちが五十日を超えて動いていないため、いったん Steam 経由での検証に切り替えました。
+              もし将来リリースまで進められるなら、その段階ではEOSを前提にした構成になるのではないかと考えています。
+            </p>
+          </section>
+
+          <section class="diary-article-block" aria-labelledby="capture-title">
+            <h2 id="capture-title">マルチ検証時の画面</h2>
+            <p>実際にフレンドと入り込んで確認したときの画面です。</p>
+            <figure>
+              <div class="diary-article-media-frame">
+                <img
+                  src="../../Assets/diary/diary-fps-part1-multiplayer-validation.png"
+                  alt="ROUND OVERの表示、スコア・命中率、三人分のスコアボードが写った検証画面"
+                  width="3840"
+                  height="2160"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption>Steam AppID 480 を用いた遠隔マルチの動作確認時のスクリーンショット</figcaption>
+            </figure>
+            <p>
+              ラウンド終了後のオーバーレイと、三人分のスコアボードが並んでいます。
+              まだグレーボックスとマネキンだらけのプロトタイプですが、「同期して撃てて、結果が残る」まで来れたのは、個人的にかなり大きな一歩でした。
+            </p>
+          </section>
+
+          <aside class="diary-article-note">
+            <h2>これから</h2>
+            <p>
+              完成期限のようなものは、いまのところはっきり決めていません。
+              気の向くままに、遊びたい体験に近づくように開発を続け、大きな進展や気づきがたまったら、また制作日記に書き足していきます。
+            </p>
+          </aside>
+        </div>
+
+        <aside class="diary-article-side" aria-label="記事情報">
+          <section>
+            <h2>この記事のタグ</h2>
+            <ul class="diary-article-side__tags">
+              <li>ゲーム制作</li>
+              <li>AI活用</li>
+              <li>制作記録</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>関連する場所</h2>
+            <ul class="diary-article-side__links">
+              <li><a href="../../index.html#top">トップページ</a></li>
+              <li><a href="../../projects/mydreamfpsgame/">夢のFPSプロジェクト</a></li>
+              <li><a href="../diary.html">制作日記一覧</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <nav class="diary-article-nav" aria-label="制作日記の移動">
+        <a href="../diary.html">制作日記一覧へ</a>
+        <a href="./dream-fps-part1.html" aria-current="page">この記事の先頭へ</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p><small>&copy; <span id="js-year"></span> naochan's world</small></p>
+    <p class="site-footer__links"><a href="../../privacy/">Privacy Policy</a></p>
+  </footer>
+
+  <script src="../../script.js" defer></script>
+</body>
+</html>
